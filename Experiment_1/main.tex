@@ -1,7 +1,11 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[report]{IEEEtran}
+\usepackage[a5paper, margin=10mm, onecolumn]{geometry}
+\usepackage{tfrupee} % Include tfrupee package
+
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{caption}
 
 \title{Lab Report: Lissajous Figures and Capturing One-Time Events on an Oscilloscope}
 \author{\textbf{Akshara Sarma, Arjun Pavanje}}
@@ -21,7 +25,23 @@
     \item \text{Function generator}
     \item \text{Oscilloscope probes and cables}
 \end{itemize}
-
+\section*{Theory}
+\subsection*{Lissajous Figures}
+Say we are given two waveforms defined by,
+\begin{align*}
+  x(t) = f_x(A_x, \omega _x, \phi _x)\\
+  y(t) = f_y(A_y, \omega _y, \phi_y)
+\end{align*}
+Where $A, \omega, \phi$ represent Amplitude, Angular Frequency, Initial Phase respectively. A Lissajous figure is the graph obtained by plotting $x(t)$ against $y(t)$. \newline
+For sinusoidal waveforms, 
+\begin{align*}
+  x(t) = A \sin (\omega t + \phi)
+\end{align*}
+and for ramp waveforms, one way of representing them is, 
+\begin{align*}
+  x(t) = (\frac{2A}{\pi} \cos^{-1}cos(\omega t + \phi)) - A
+  \end{align*}
+  Ramp waveforms may also be defined as a piece-wise function, but this is what we have used in our python code to verify. To verify results, we can obtain the points in $x(t), y(t)$ and plot them against each other.
 \section*{Procedure}
 
 \subsection*{Observation of Lissajous Figures}
@@ -46,7 +66,26 @@
 \end{enumerate}
 \section*{Results and Discussion}
 \subsection*{Lissajous Figures}
-\vspace{1em}
+
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figs/function_gen_1.jpeg}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figs/Lissajous_1.jpeg}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figs/fig1.jpeg}
+    \end{minipage}
+\end{figure}
+            
 \textbf{Example Waveforms and Figures:}
 
 % Add placeholders for waveforms and figures
