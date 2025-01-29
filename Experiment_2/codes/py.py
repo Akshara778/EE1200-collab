@@ -53,3 +53,5 @@ plt.xlim(-20,1000)
 plt.ylim(-2,8)
 plt.grid(True)
 plt.savefig("../figs/fig3.png")
+
+plt.show()
