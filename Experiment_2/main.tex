@@ -18,11 +18,10 @@ To analyze the transient and steady-state responses of an RC circuit to a square
 \section*{Apparatus}
 \begin{itemize}
   \item Function generator
-  \item Resistor \(R\)
-  \item Capacitor \(C\)
-  \item Oscilloscope (CRO)
+  \item Resistor 
+  \item Capacitor 
+  \item Oscilloscope
   \item Connecting wires
-  \item Multimeter
 \end{itemize}
 
 \section*{Circuit Diagram}
@@ -73,42 +72,34 @@ The output voltage \(V_{out}\) is given by:
 \end{enumerate}
 
 \section*{Results}
-\subsection*{Case 1: \(RC = T\)}
-\includegraphics[width=\textwidth]{attach_first_case_plot.png}
-\textbf{Hand Calculations:}
-\[ \tau = RC, \quad T = \tau \]
-\[ V_{out}(t) = V_{in}(1 - e^{-t/RC}) \]
-\textbf{Observations:}
-Voltage values and time periods from CRO:
-\begin{itemize}
-    \item Peak voltage: \(V_p = \ldots\)
-    \item Time period: \(T = \ldots\)
-\end{itemize}
+\pagebreak
+\subsection*{Case 1: \(RC << T\)}
+\begin{figure*}[h!]
+    {\includegraphics[ width=0.53\columnwidth]{figs/steady_1.jpg}}
+    \hspace{\fill}
+    {\includegraphics[ width=0.53\columnwidth]{./figs/trans_1.jpg}}
+\end{figure*}
 
-\subsection*{Case 2: \(RC >> T\)}
-\includegraphics[width=\textwidth]{attach_second_case_plot.png}
-\textbf{Hand Calculations:}
-\[ \tau = RC, \quad \tau \gg T \]
-\[ V_{out}(t) \approx \text{constant over a cycle.} \]
-\textbf{Observations:}
-Voltage values and time periods from CRO:
-\begin{itemize}
-    \item Peak voltage: \(V_p = \ldots\)
-    \item Time period: \(T = \ldots\)
-\end{itemize}
+\subsection*{Case 2: \(RC = T\)}
+\begin{figure*}[h!]
+    {\includegraphics[ width=0.53\columnwidth]{figs/steady_2.jpg}}
+    \hspace{\fill}
+    {\includegraphics[ width=0.53\columnwidth]{./figs/trans_2.jpg}}
+\end{figure*}
 
-\subsection*{Case 3: \(RC << T\)}
-\includegraphics[width=\textwidth]{attach_third_case_plot.png}
-\textbf{Hand Calculations:}
-\[ \tau = RC, \quad \tau \ll T \]
-\[ V_{out}(t) \approx V_{in}(t). \]
-\textbf{Observations:}
-Voltage values and time periods from CRO:
-\begin{itemize}
-    \item Peak voltage: \(V_p = \ldots\)
-    \item Time period: \(T = \ldots\)
-\end{itemize}
-
+\subsection*{Case 3: \(RC >> T\)}
+Here, we have plotted more than $5$ cycles of square wave as it better shows the increasing nature of the potential difference across capacitor. \pagebreak
+\begin{figure*}[h!]
+    {\includegraphics[ width=0.53\columnwidth]{figs/steady_3.jpg}}
+    \hspace{\fill}
+    {\includegraphics[ width=0.53\columnwidth]{./figs/trans_3.jpg}}
+\end{figure*}
+%For an infinite number of cycles of square wave, output comes out to be,
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{figs/trans_infty.jpg}
+  \label{label}
+\end{figure}
 \section*{Discussion}
 \begin{itemize}
     \item Compare the experimental results with the theoretical calculations.
