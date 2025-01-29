@@ -45,15 +45,6 @@ Image of the actual circuit we connected on the breadboard is below,
 \framebox[\textwidth]{\parbox{0.95\textwidth}{Attach circuit image here.}}
 
 \section*{Theory}
-An RC circuit responds to a square wave input differently based on the relationship between the circuit's time constant \(\tau = RC\) and the input time period \(T\):
-\begin{enumerate}
-    \item \(RC = T\): The circuit responds in a manner where the charging and discharging curves overlap significantly within one cycle.
-    \item \(RC >> T\): The capacitor does not have sufficient time to charge or discharge completely within a cycle, resulting in a nearly constant output.
-    \item \(RC << T\): The capacitor charges and discharges very quickly, producing an output waveform nearly identical to the input.
-\end{enumerate}
-
-The output voltage \(V_{out}\) is given by:
-\[ V_{out}(t) = V_{in}(1 - e^{-t/RC}) \text{ during charging, and } V_{out}(t) = V_{in}e^{-t/RC} \text{ during discharging.} \]
 
 \section*{Procedure}
 \begin{enumerate}
@@ -72,7 +63,7 @@ The output voltage \(V_{out}\) is given by:
 \end{enumerate}
 
 \section*{Results}
-\pagebreak
+%\pagebreak
 \subsection*{Case 1: \(RC << T\)}
 \begin{figure*}[h!]
     {\includegraphics[ width=0.53\columnwidth]{figs/steady_1.jpg}}
@@ -88,13 +79,14 @@ The output voltage \(V_{out}\) is given by:
 \end{figure*}
 
 \subsection*{Case 3: \(RC >> T\)}
-Here, we have plotted more than $5$ cycles of square wave as it better shows the increasing nature of the potential difference across capacitor. \pagebreak
+Here, we have plotted more than $5$ cycles of square wave as it better shows the increasing nature of the potential difference across capacitor. 
+%\pagebreak
 \begin{figure*}[h!]
     {\includegraphics[ width=0.53\columnwidth]{figs/steady_3.jpg}}
     \hspace{\fill}
     {\includegraphics[ width=0.53\columnwidth]{./figs/trans_3.jpg}}
-\end{figure*}
-%For an infinite number of cycles of square wave, output comes out to be,
+\end{figure*}\\
+For an infinite number of cycles of square wave, output comes out to be,
 \begin{figure}[h!]
   \centering
   \includegraphics[width=0.7\columnwidth]{figs/trans_infty.jpg}
