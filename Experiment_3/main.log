@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.4)  12 FEB 2025 21:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.4)  12 FEB 2025 21:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -779,11 +779,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
 
 [7]
-<figs/fig1.png, id=104, 1204.5pt x 1606.0pt>
+<figs/fig1.png, id=104, 1017.8025pt x 1321.93875pt>
 File: figs/fig1.png Graphic file (type png)
 <use figs/fig1.png>
 Package pdftex.def Info: figs/fig1.png  used on input line 304.
-(pdftex.def)             Requested size: 230.0pt x 306.66252pt.
+(pdftex.def)             Requested size: 230.0pt x 298.71434pt.
 
 Overfull \hbox (130.0pt too wide) in paragraph at lines 304--305
 [][] 
@@ -802,21 +802,21 @@ Overfull \hbox (130.0pt too wide) in paragraph at lines 309--310
 
 
 [8 <./figs/fig1.png> <./figs/fig2.png>]
-<figs/fig3.png, id=112, 1204.5pt x 1606.0pt>
+<figs/fig3.png, id=112, 1028.84375pt x 1424.32124pt>
 File: figs/fig3.png Graphic file (type png)
 <use figs/fig3.png>
 Package pdftex.def Info: figs/fig3.png  used on input line 317.
-(pdftex.def)             Requested size: 230.0pt x 306.66252pt.
+(pdftex.def)             Requested size: 230.0pt x 318.39378pt.
 
 Overfull \hbox (130.0pt too wide) in paragraph at lines 317--318
 [][] 
  []
 
-<figs/fig4.png, id=113, 1204.5pt x 1606.0pt>
+<figs/fig4.png, id=113, 1170.3725pt x 1515.6625pt>
 File: figs/fig4.png Graphic file (type png)
 <use figs/fig4.png>
 Package pdftex.def Info: figs/fig4.png  used on input line 322.
-(pdftex.def)             Requested size: 230.0pt x 306.66252pt.
+(pdftex.def)             Requested size: 230.0pt x 297.85414pt.
 
 Overfull \hbox (130.0pt too wide) in paragraph at lines 322--323
 [][] 
@@ -825,21 +825,21 @@ Overfull \hbox (130.0pt too wide) in paragraph at lines 322--323
 
 
 [9 <./figs/fig3.png> <./figs/fig4.png>]
-<figs/fig5.png, id=119, 1204.5pt x 1606.0pt>
+<figs/fig5.png, id=119, 1083.04625pt x 1423.3175pt>
 File: figs/fig5.png Graphic file (type png)
 <use figs/fig5.png>
 Package pdftex.def Info: figs/fig5.png  used on input line 330.
-(pdftex.def)             Requested size: 230.0pt x 306.66252pt.
+(pdftex.def)             Requested size: 230.0pt x 302.25008pt.
 
 Overfull \hbox (130.0pt too wide) in paragraph at lines 330--331
 [][] 
  []
 
-<figs/fig6.png, id=120, 462.528pt x 346.896pt>
+<figs/fig6.png, id=120, 1079.03125pt x 1432.35126pt>
 File: figs/fig6.png Graphic file (type png)
 <use figs/fig6.png>
 Package pdftex.def Info: figs/fig6.png  used on input line 335.
-(pdftex.def)             Requested size: 230.0pt x 172.50008pt.
+(pdftex.def)             Requested size: 230.0pt x 305.30495pt.
 
 Overfull \hbox (130.0pt too wide) in paragraph at lines 335--336
 [][] 
@@ -873,9 +873,9 @@ ublic/amsfonts/cm/cmr8.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy8.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.
 pfb>
-Output written on main.pdf (10 pages, 2239826 bytes).
+Output written on main.pdf (10 pages, 1674147 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
+ 180 PDF objects out of 1000 (max. 8388607)
  138 compressed objects within 2 object streams
  33 named destinations out of 1000 (max. 500000)
  144 words of extra memory for PDF output out of 10000 (max. 10000000)
