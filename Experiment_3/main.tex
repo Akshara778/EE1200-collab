@@ -29,14 +29,14 @@
 \end{center}
 \newpage
 
-\section*{Introduction}
+\section{Introduction}
 In this experiment, we investigate the frequency response of the RC low-pass filter for single-stage, two-stage (cascade), and three-stage (cascade) filters. The objective is to derive the transfer function for each case and plot the Bode magnitude and phase responses. The components used in the experiment have the following values:
 \begin{itemize}
     \item Resistance, $ R = 100 \, \Omega $
     \item Capacitance, $ C = 0.1 \, \mu F $
 \end{itemize}
 
-\section*{Transfer Function and Bode Plot for Single-Stage RC Filter}
+\section{Transfer Function and Bode Plot for Single-Stage RC Filter}
 
 The transfer function of a single-stage RC low-pass filter is given by:
 
@@ -52,7 +52,7 @@ Where:
     \item $X_c = \frac{1}{j\omega C}$ is the impedance due to capacitor
 \end{itemize}
 
-\subsection*{One-Stage RC Low-Pass Filter}
+\subsection{One-Stage RC Low-Pass Filter}
 \pagebreak
 \begin{figure}[!h]
 \centering
@@ -133,7 +133,7 @@ H(j\omega) = \frac{1}{(1-\omega^2R^2C^2) + j(3\omega RC)}
 \end{align*}
 We finally get,
 \begin{align*}
-    |H(jw)| &= \frac{1}{\sqrt{(1 - \omega^2 R^2 C^2})^2 +(3\omega RC)^2}\\
+    |H(jw)| &= \frac{1}{\sqrt{(1 - \omega^2 R^2 C^2)^2 +(3\omega RC)^2}}\\
     \phi &= \tan^{-1}\left( \frac{3\omega RC}{1-\omega^2R^2C^2}\right)
 \end{align*}
 \subsection{Three-Stage RC Low-Pass Filter (Cascade of Three Filters)}
@@ -193,7 +193,7 @@ H(j\omega) = \frac{1}{(1-5\omega^2R^2C^2) + j(6\omega RC - \omega^3R^3C^3)}
 \end{align*}
 We finally get,
 \begin{align*}
-    |H(jw)| &= \frac{1}{\sqrt{(1 - 5\omega^2 R^2 C^2})^2 +(6R\omega C - \omega^3R^3C^3)^2} \\
+    |H(jw)| &= \frac{1}{\sqrt{(1 - 5\omega^2 R^2 C^2)^2 +(6R\omega C - \omega^3R^3C^3)^2}} \\
     \phi &= \tan^{-1}\left( \frac{6\omega RC- \omega^3R^3c^3}{1-5\omega^2R^2C^2}\right)
 \end{align*}
 \section{Bode Plot Analysis}
@@ -208,6 +208,7 @@ $\phi$ vs $log_{10}(w)$ is plotted\\
 The frequency response will be plotted for single, two-stage, and three-stage filters.
 
 \section{Experimental Data}
+One thing to note is that when the value of capacitance was verified using a multimeter, capacitance was found to be $0.88$ times the labelled value. So capacitance for theoretical calculations was taken to be $0.088 \mu F$. \\
 The following table summarizes the experimental data collected. It includes the frequency ($f$), the magnitude of the transfer function $H(j\omega)$, and the change in the time ($\Delta t$)\\
 One stage RC low pass filter:\\
 \begin{longtable}{|c|c|c|}
@@ -294,10 +295,9 @@ Three stage RC low pass filter:\\
 51200 & 0.03 & -0.0105 \\
 % continue adding your data
 \end{longtable}
-\pagebreak
 \section{Plots}
-
-\subsection*{One Stage:}
+\subsection{One Stage:}
+\pagebreak
 \begin{figure}[h!]
 	\begin{subfigure}[b]{100pt}
 		\caption{Magnitude plot}
@@ -309,8 +309,8 @@ Three stage RC low pass filter:\\
 		\includegraphics[width = 230pt]{figs/fig2.png}
 	\end{subfigure}
 \end{figure}
-
-\subsection*{Two Stage:}
+\subsection{Two Stage:}
+\pagebreak
 \begin{figure}[h!]
 	\begin{subfigure}[b]{100pt}
 		\caption{Magnitude plot}
@@ -322,8 +322,8 @@ Three stage RC low pass filter:\\
 		\includegraphics[width = 230pt]{figs/fig4.png}
 	\end{subfigure}
 \end{figure}
+\subsection{Three Stage:}
 \pagebreak
-\subsection*{Three Stage:}
 \begin{figure}[h!]
 	\begin{subfigure}[b]{100pt}
 		\caption{Magnitude plot}
