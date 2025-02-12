@@ -21,7 +21,7 @@ def bode_phase(start_w, r, c, h, n):
         w += h
     return [w_coord, h_coord]
 
-coord_magnitude = bode_magnitude(100*np.pi, 100, 0.00000008, 0.05, 10000000)
+coord_magnitude = bode_magnitude(100*np.pi, 100, 0.00000008, 0.05, 1000000)
 coord_phase = bode_phase(100*np.pi, 100, 0.00000008, 10, 1000000)
 
 # Given data
@@ -47,7 +47,7 @@ plt.xlabel("x")
 plt.ylabel("y")
 plt.grid(True)
 #plt.show()
-plt.savefig("../figs/fig3-magnitude.png")
+plt.savefig("../figs/fig5.png")
 
 
 plt.figure()
@@ -56,7 +56,7 @@ plt.plot(coord_phase[0][:], coord_phase[1][:])
 plt.xlabel("x")
 plt.ylabel("y")
 plt.grid(True)
-plt.savefig("../figs/fig3-phase.png")
+plt.savefig("../figs/fig6.png")
 #plt.show()
 
 

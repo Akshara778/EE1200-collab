@@ -47,7 +47,7 @@ plt.xlabel("x")
 plt.ylabel("y")
 plt.grid(True)
 #plt.show()
-plt.savefig("../figs/fig2-magnitude.png")
+plt.savefig("../figs/fig3.png")
 
 plt.figure()
 plt.scatter(w_value, phase)
@@ -55,7 +55,7 @@ plt.plot(coord_phase[0][:], coord_phase[1][:])
 plt.xlabel("x")
 plt.ylabel("y")
 plt.grid(True)
-plt.savefig("../figs/fig2-phase.png")
+plt.savefig("../figs/fig4.png")
 #plt.show()
 
 

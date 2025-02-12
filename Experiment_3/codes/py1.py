@@ -40,18 +40,13 @@ w_value= np.log10(w_values)
 # Calculate log(H(jw)) - assuming it's log base 10
 log_H_values = 20*np.log10(H_values)
 
-# Now you can use w_values and log_H_values as numpy arrays
-print("log(w) \n", w_value)
-print("log(H(jw)) \n", log_H_values)
-print("phase \n", phase)
-
 plt.figure()
 plt.scatter(w_value, log_H_values)
 plt.plot(coord_magnitude[0][:], coord_magnitude[1][:])
 plt.xlabel("x")
 plt.ylabel("y")
 plt.grid(True)
-#plt.savefig("../figs/fig1-magnitude.png")
+plt.savefig("../figs/fig1.png")
 
 
 plt.figure()
@@ -61,7 +56,7 @@ plt.xlabel("x")
 plt.ylabel("y")
 plt.grid(True)
 #plt.ylim(-2, 1)
-#plt.savefig("../figs/fig1-phase.png")
+plt.savefig("../figs/fig2.png")
 plt.show()
 
 
