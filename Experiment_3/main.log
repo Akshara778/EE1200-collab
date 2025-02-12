@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.4)  12 FEB 2025 21:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.4)  12 FEB 2025 21:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -793,9 +793,9 @@ Overfull \hbox (130.0pt too wide) in paragraph at lines 304--305
 File: figs/fig2.png Graphic file (type png)
 <use figs/fig2.png>
 Package pdftex.def Info: figs/fig2.png  used on input line 309.
-(pdftex.def)             Requested size: 230.0pt x 306.66252pt.
+(pdftex.def)             Requested size: 225.0pt x 299.99701pt.
 
-Overfull \hbox (130.0pt too wide) in paragraph at lines 309--310
+Overfull \hbox (125.0pt too wide) in paragraph at lines 309--310
 [][] 
  []
 
@@ -806,9 +806,9 @@ Overfull \hbox (130.0pt too wide) in paragraph at lines 309--310
 File: figs/fig3.png Graphic file (type png)
 <use figs/fig3.png>
 Package pdftex.def Info: figs/fig3.png  used on input line 317.
-(pdftex.def)             Requested size: 230.0pt x 318.39378pt.
+(pdftex.def)             Requested size: 215.0pt x 297.63841pt.
 
-Overfull \hbox (130.0pt too wide) in paragraph at lines 317--318
+Overfull \hbox (115.0pt too wide) in paragraph at lines 317--318
 [][] 
  []
 
@@ -839,9 +839,9 @@ Overfull \hbox (130.0pt too wide) in paragraph at lines 330--331
 File: figs/fig6.png Graphic file (type png)
 <use figs/fig6.png>
 Package pdftex.def Info: figs/fig6.png  used on input line 335.
-(pdftex.def)             Requested size: 230.0pt x 305.30495pt.
+(pdftex.def)             Requested size: 228.0pt x 302.63853pt.
 
-Overfull \hbox (130.0pt too wide) in paragraph at lines 335--336
+Overfull \hbox (128.0pt too wide) in paragraph at lines 335--336
 [][] 
  []
 
@@ -888,7 +888,7 @@ ublic/amsfonts/cm/cmr8.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy8.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12
 .pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (10 pages, 1682259 bytes).
+Output written on main.pdf (10 pages, 1682287 bytes).
 PDF statistics:
  187 PDF objects out of 1000 (max. 8388607)
  143 compressed objects within 2 object streams
