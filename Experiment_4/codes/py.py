@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import math
 
 # Values of R, L, C 
-R = 25.0 + 30 # ohm
+R = 55 # ohm
 L = 2.2e-3 # henry
-C = 4150e-12 # farad
+C = 4600e-12 # farad
 
 h = 1e-9 # stepsize
 tmax = 2e-4 # max time 
