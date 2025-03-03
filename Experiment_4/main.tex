@@ -9,13 +9,13 @@
 \usepackage{longtable} 
 \usepackage{tikz}
 
-\title{\textbf{Lab Report: Experiment 3}}
+\title{\textbf{Lab Report: Experiment 4}}
 \author{EE24BTECH11003 : Akshara Sarma Chennubhatla\\EE24BTECH11005 : Arjun Pavanje}
 
 \begin{document}
 \maketitle
 \begin{center}
-	\textbf{Experiment:}\\Studying the transient\\and steady state response\\of an RC Circuit\\with Square Wave Input
+	\textbf{Experiment:}\\Studying damped\\LC oscillations\\for underdamped conditions
 \end{center}
 \vspace{30pt}
 \begin{figure}[h!]
@@ -34,7 +34,7 @@ In this experiment, we study and analyze the transient response of an LC circuit
 
 \begin{itemize}
     \item Inductance, $2.2 mH$ 
-    \item Capacitance, $ 450 pF $
+    \item Capacitance, $ 4.6 nF $
 \end{itemize}
 
 \section{Theory}
@@ -43,8 +43,8 @@ In this experiment, we study and analyze the transient response of an LC circuit
 \resizebox{0.5\textwidth}{!}{%
 \begin{circuitikz}
 \tikzstyle{every node}=[font=\small]
-\draw (6.25,14.75) to[C,l={ \small $0.5nF$}] (6.25,11);
-\draw (10,14.75) to[L,l={ \small $2.2mH, 75\Omega$} ] (10,11);
+\draw (6.25,14.75) to[C,l={ \small $460pF$}] (6.25,11);
+\draw (10,14.75) to[L,l={ \small $2.2mH, 55\Omega$} ] (10,11);
 \draw (6.25,14.75) to[short] (10,14.75);
 \draw (6.25,11) to[short] (10,11);
 \end{circuitikz}
@@ -114,7 +114,7 @@ From $(1), (2)$ we get,
 \end{align*}
 We finally get,
 \begin{align*}
-   q(t) &= \left(\frac{CV_{DC}}{\sqrt{1-\xi^2}} \right) e^{-\xi \omega_n t}\cos\left(\omega_d t + \tan^{-1}\left(-\frac{\xi \omega_n}{w_d}\right)\right). 
+   V(t) &= \left(\frac{CV_{DC}}{\sqrt{1-\xi^2}} \right) e^{-\xi \omega_n t}\cos\left(\omega_d t + \tan^{-1}\left(-\frac{\xi \omega_n}{w_d}\right)\right). 
 \end{align*}
 Where, $\xi = \frac{R}{2}\sqrt{\frac{C}{L}}, \omega_n = \frac{1}{\sqrt{LC}}, \omega_d = \omega_n\sqrt{1-\xi^2}$
 \section{Procedure}
@@ -123,13 +123,13 @@ Where, $\xi = \frac{R}{2}\sqrt{\frac{C}{L}}, \omega_n = \frac{1}{\sqrt{LC}}, \om
     \item Then carefully disconnect the capacitor from charging and connect it in parallel with an inductor (preferably one of large inductance). 
     \item Measure the voltage across either the inductor or capacitor (we have measured across inductor for convenience) using an oscilloscope. 
     \item Using the oscilloscope, set it in the $single$ mode and adjust the trigger level accordingly so that the voltage decay across the inductor (or capacitor) can be observed and captured properly. 
-    \item Be careful not to charge the capacitor when it is connected in parallel to the inductor, as the inductor might blow up.
+    \item Be careful not to charge the capacitor when it is connected in parallel to the inductor, as the inductor WILL melt.
 \end{itemize}
 
 
 \section{Experimental Data}
-Resistance $25\Omega$,\newline
-Capacitance $460pF$\newline
+Resistance $55\Omega$,\newline
+Capacitance $4.6nF$\newline
 Inductance, $2.2mH$
 \begin{figure}[h!]
 	\begin{subfigure}[b]{100pt}
@@ -142,9 +142,36 @@ Inductance, $2.2mH$
 		\includegraphics[width = 250pt]{figs/fig2.png}
 	\end{subfigure}
 \end{figure}
+Below are the readings taken at different points in the plot to calculate the value of $\xi$ which we will then use to calculate the value of resistance. Then we will verify the obtained value with the labelled value of resistance on the inductor.
+\pagebreak
+\section{Measurements}
+\begin{figure}[h!]
+	\begin{subfigure}[b]{100pt}
+		\includegraphics[width = 225pt]{figs/fig3.jpg}
+	\end{subfigure}
+	\hspace{110pt}
+\begin{subfigure}[b]{100pt}
+		\includegraphics[width = 225pt]{figs/fig4.jpg}
+	\end{subfigure}
+\end{figure}
+\pagebreak
+\begin{figure}[h!]
+\begin{subfigure}[b]{100pt}
+		\includegraphics[width = 225pt]{figs/fig5.jpg}
+	\end{subfigure}
+	\hspace{110pt}
+\begin{subfigure}[b]{100pt}
+		\includegraphics[width = 225pt]{figs/fig6.jpg}
+	\end{subfigure}
+\end{figure}
+We know the value of $\omega_n, L, C$, we can use it to calculate $\xi$ from which we can calculate $R$ and verify. We can get $\xi$ from the equation, 
+\begin{align*}
+   V(t) &= \left(\frac{CV_{DC}}{\sqrt{1-\xi^2}} \right) e^{-\xi \omega_n t}\cos\left(\omega_d t + \tan^{-1}\left(-\frac{\xi \omega_n}{w_d}\right)\right). 
+\end{align*}
+On solving we get $R$ to be approximately equal to the theoretical value of $55\Omega$
 \newline Python code used for verifcation can be found below,
 \newline
 \url{https://github.com/ArjunPavanje/EE1200/tree/main/Experiment_4/codes} 
 \section{Conclusion}
-In this experiment, we derived the equation for the damped oscillation of a series $RLC$ circuit and verified it experimentally.
+In this experiment, we derived the equation for the damped oscillation of a series $LC$ circuit with internal resistance and verified it experimentally.
 \end{document}
