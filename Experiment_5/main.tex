@@ -558,6 +558,7 @@ The diode is in reverse-bias condition. So current flows through the feedback lo
 \section*{Results and Observations}
 \subsection*{Weighted Adder}
 \subsubsection*{$2V_1 + V_2 - V_3$}
+Here, $V_1 = V_3 = 1V, V_2 = 5V$, \begin{align*}2V_1+V_2-V_3 = 6V\end{align*}
 \begin{figure}[h!]
    \centering
    \includegraphics[width=\columnwidth]{figs/input1.png}
@@ -577,6 +578,7 @@ The diode is in reverse-bias condition. So current flows through the feedback lo
 \end{figure}
 \pagebreak
 \subsubsection*{$2V_1 - V_3$}
+Here, $V_1 = 5V, V_3 = 1V$, \begin{align*}2V_1-V_3 = 6V\end{align*}
 \begin{figure}[h!]
    \centering
    \includegraphics[scale = 0.2]{figs/input2.png}
@@ -596,6 +598,7 @@ The diode is in reverse-bias condition. So current flows through the feedback lo
 
 \pagebreak
 \subsection*{Integrator Op-Amp}
+Here, input wave is a square wave (triangle), so its integration will result in a triangle wave. Amplitude of triangle wave will be $\frac{t}{2RC}V_{max}$. \newline Here, $R = 10k\Omega, C = 10\mu F, V_{max} = 4V, t = 10 ms$. So, amplitude comes out to be $200mV$
 \begin{figure}[!h]
 	\begin{subfigure}[b]{100pt}
 		\caption{Output vs Input}

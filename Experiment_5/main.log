@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.4)  6 MAR 2025 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.4)  6 MAR 2025 13:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -757,8 +757,27 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <figs/input1.png, id=90, 1284.8pt x 554.07pt>
 File: figs/input1.png Graphic file (type png)
 <use figs/input1.png>
-Package pdftex.def Info: figs/input1.png  used on input line 563.
+Package pdftex.def Info: figs/input1.png  used on input line 564.
 (pdftex.def)             Requested size: 390.0pt x 168.1837pt.
+<figs/1add1.png, id=91, 1284.8pt x 949.5475pt>
+File: figs/1add1.png Graphic file (type png)
+<use figs/1add1.png>
+Package pdftex.def Info: figs/1add1.png  used on input line 571.
+(pdftex.def)             Requested size: 260.0pt x 192.15192pt.
+
+Overfull \hbox (160.0pt too wide) in paragraph at lines 571--572
+[][] 
+ []
+
+<figs/1add2.png, id=92, 1205.50375pt x 1284.8pt>
+File: figs/1add2.png Graphic file (type png)
+<use figs/1add2.png>
+Package pdftex.def Info: figs/1add2.png  used on input line 576.
+(pdftex.def)             Requested size: 180.0pt x 191.82948pt.
+
+Overfull \hbox (80.0pt too wide) in paragraph at lines 576--577
+[][] 
+ []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -766,123 +785,107 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 [8]
-<figs/1add1.png, id=106, 1284.8pt x 949.5475pt>
-File: figs/1add1.png Graphic file (type png)
-<use figs/1add1.png>
-Package pdftex.def Info: figs/1add1.png  used on input line 570.
-(pdftex.def)             Requested size: 260.0pt x 192.15192pt.
-
-Overfull \hbox (160.0pt too wide) in paragraph at lines 570--571
-[][] 
- []
-
-<figs/1add2.png, id=107, 1205.50375pt x 1284.8pt>
-File: figs/1add2.png Graphic file (type png)
-<use figs/1add2.png>
-Package pdftex.def Info: figs/1add2.png  used on input line 575.
-(pdftex.def)             Requested size: 180.0pt x 191.82948pt.
-
-Overfull \hbox (80.0pt too wide) in paragraph at lines 575--576
-[][] 
- []
-
-
 
 [9 <./figs/input1.png> <./figs/1add1.png> <./figs/1add2.png>]
 <figs/input2.png, id=115, 1284.8pt x 1014.79124pt>
 File: figs/input2.png Graphic file (type png)
 <use figs/input2.png>
-Package pdftex.def Info: figs/input2.png  used on input line 582.
+Package pdftex.def Info: figs/input2.png  used on input line 584.
 (pdftex.def)             Requested size: 256.95544pt x 202.95465pt.
 <figs/2add1.png, id=116, 1284.8pt x 947.54pt>
 File: figs/2add1.png Graphic file (type png)
 <use figs/2add1.png>
-Package pdftex.def Info: figs/2add1.png  used on input line 588.
+Package pdftex.def Info: figs/2add1.png  used on input line 590.
 (pdftex.def)             Requested size: 290.0pt x 213.86684pt.
 
-Overfull \hbox (190.0pt too wide) in paragraph at lines 588--589
+Overfull \hbox (190.0pt too wide) in paragraph at lines 590--591
 [][] 
  []
 
 <figs/2add2.png, id=117, 934.49126pt x 1284.8pt>
 File: figs/2add2.png Graphic file (type png)
 <use figs/2add2.png>
-Package pdftex.def Info: figs/2add2.png  used on input line 593.
+Package pdftex.def Info: figs/2add2.png  used on input line 595.
 (pdftex.def)             Requested size: 157.0pt x 215.84492pt.
 
-Overfull \hbox (57.0pt too wide) in paragraph at lines 593--594
+Overfull \hbox (57.0pt too wide) in paragraph at lines 595--596
 [][] 
  []
 
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[10 <./figs/input2.png> <./figs/2add1.png> <./figs/2add2.png>]
-<figs/int1.png, id=125, 1284.8pt x 977.6525pt>
+
+
+[10 <./figs/input2.png>]
+<figs/int1.png, id=124, 1284.8pt x 977.6525pt>
 File: figs/int1.png Graphic file (type png)
 <use figs/int1.png>
-Package pdftex.def Info: figs/int1.png  used on input line 602.
+Package pdftex.def Info: figs/int1.png  used on input line 605.
 (pdftex.def)             Requested size: 230.0pt x 175.01512pt.
 
-Overfull \hbox (130.0pt too wide) in paragraph at lines 602--603
+Overfull \hbox (130.0pt too wide) in paragraph at lines 605--606
 [][] 
  []
 
-<figs/int2.png, id=126, 1284.8pt x 1151.30125pt>
+<figs/int2.png, id=125, 1284.8pt x 1151.30125pt>
 File: figs/int2.png Graphic file (type png)
 <use figs/int2.png>
-Package pdftex.def Info: figs/int2.png  used on input line 607.
+Package pdftex.def Info: figs/int2.png  used on input line 610.
 (pdftex.def)             Requested size: 196.0pt x 175.62149pt.
 
-Overfull \hbox (96.0pt too wide) in paragraph at lines 607--608
+Overfull \hbox (96.0pt too wide) in paragraph at lines 610--611
 [][] 
  []
 
-<figs/half1.png, id=127, 1284.8pt x 935.495pt>
+<figs/half1.png, id=126, 1284.8pt x 935.495pt>
 File: figs/half1.png Graphic file (type png)
 <use figs/half1.png>
-Package pdftex.def Info: figs/half1.png  used on input line 615.
+Package pdftex.def Info: figs/half1.png  used on input line 618.
 (pdftex.def)             Requested size: 230.0pt x 167.46826pt.
 
-Overfull \hbox (130.0pt too wide) in paragraph at lines 615--616
+Overfull \hbox (130.0pt too wide) in paragraph at lines 618--619
 [][] 
  []
 
-<figs/half2.png, id=128, 1284.8pt x 1173.38374pt>
+<figs/half2.png, id=127, 1284.8pt x 1173.38374pt>
 File: figs/half2.png Graphic file (type png)
 <use figs/half2.png>
-Package pdftex.def Info: figs/half2.png  used on input line 620.
+Package pdftex.def Info: figs/half2.png  used on input line 623.
 (pdftex.def)             Requested size: 183.0pt x 167.1194pt.
 
-Overfull \hbox (83.0pt too wide) in paragraph at lines 620--621
+Overfull \hbox (83.0pt too wide) in paragraph at lines 623--624
 [][] 
  []
 
 
 
-[11 <./figs/int1.png> <./figs/int2.png> <./figs/half1.png> <./figs/half2.png>]
-<figs/full1.png, id=138, 1284.8pt x 908.39375pt>
+[11 <./figs/2add1.png> <./figs/2add2.png> <./figs/int1.png> <./figs/int2.png>]
+
+[12 <./figs/half1.png> <./figs/half2.png>]
+<figs/full1.png, id=142, 1284.8pt x 908.39375pt>
 File: figs/full1.png Graphic file (type png)
 <use figs/full1.png>
-Package pdftex.def Info: figs/full1.png  used on input line 628.
+Package pdftex.def Info: figs/full1.png  used on input line 631.
 (pdftex.def)             Requested size: 230.0pt x 162.61671pt.
 
-Overfull \hbox (130.0pt too wide) in paragraph at lines 628--629
+Overfull \hbox (130.0pt too wide) in paragraph at lines 631--632
 [][] 
  []
 
-<figs/full2.png, id=139, 1284.8pt x 1095.09125pt>
+<figs/full2.png, id=143, 1284.8pt x 1095.09125pt>
 File: figs/full2.png Graphic file (type png)
 <use figs/full2.png>
-Package pdftex.def Info: figs/full2.png  used on input line 633.
+Package pdftex.def Info: figs/full2.png  used on input line 636.
 (pdftex.def)             Requested size: 192.0pt x 163.63834pt.
 
-Overfull \hbox (92.0pt too wide) in paragraph at lines 633--634
+Overfull \hbox (92.0pt too wide) in paragraph at lines 636--637
 [][] 
  []
 
 
 
-[12 <./figs/full1.png> <./figs/full2.png>] (./main.aux)
+[13 <./figs/full1.png> <./figs/full2.png>] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -895,10 +898,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 43853 strings out of 473201
- 1066924 string characters out of 5692161
+ 43856 strings out of 473201
+ 1066987 string characters out of 5692161
  1762937 words of memory out of 5000000
- 66645 multiletter control sequences out of 15000+600000
+ 66647 multiletter control sequences out of 15000+600000
  569058 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,14n,105p,407b,978s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -914,10 +917,10 @@ s/cm/cmr6.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
 .pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></opt/texl
 ive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (12 pages, 2193377 bytes).
+Output written on main.pdf (13 pages, 2196074 bytes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
+ 76 named destinations out of 1000 (max. 500000)
  78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
