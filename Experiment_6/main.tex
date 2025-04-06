@@ -1,644 +1,474 @@
-\documentclass[a4paper,12pt]{article}
-
-\usepackage{graphicx}
+\documentclass{article}
 \usepackage{amsmath}
-\usepackage{hyperref}
-\usepackage{caption}
-\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{circuitikz}
+%\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{shapes,arrows}
 \usepackage{circuitikz}
 
-\title{\textbf{Lab Report: Experiment 5}}
-\author{EE1200 - IIT Hyderabad}
-\date{\today}
+\title{\textbf{Lab Report: Experiment 6}}
+\author{EE24BTECH11003 : Akshara Sarma Chennubhatla\\EE24BTECH11005 : Arjun Pavanje}
 
 \begin{document}
 \maketitle
-
 \begin{center}
-    \textbf{Experiment:}Op-Amp Applications
+	\textbf{Experiment:} Design, implementation, and analysis\\of a bandpass filter constructed by\\cascading Sallen-Key second-order\\low-pass and high-pass filters.\\Analysis of Bode plots of HPF, LPF and BPF.
 \end{center}
 \vspace{30pt}
-
 \begin{figure}[h!]
-    \centering
-    \includegraphics[width = 100pt]{.logo/logo.png}\\
+	\centering
+	\includegraphics[width = 100pt]{.logo/logo.png}\\
 \end{figure}
-
 \begin{center}
-    Bachelor of Technology\\
-    \vspace{10pt}
-    Department of Electrical Engineering\\
+	Bachelor of Technology\\
+	\vspace{10pt}
+	Department of Electrical Engineering\\
 \end{center}
 \newpage
 
-\section*{Objective}
-The objective of this experiment is to analyze and implement three operational amplifier applications:
-\begin{enumerate}
-    \item Custom Weighted Summing and Difference Amplifier
-    \item Op-Amp Integrator
-    \item Precision Rectifier (Super Diode)
-\end{enumerate}
+\section*{1 Introduction}
 
-\section*{Components Required}
+This experiment focuses on implementing a bandpass filter using the Sallen-Key topology, a versatile active filter design that employs operational amplifiers.
+
+The bandpass filter is constructed by cascading a high-pass filter (HPF) and a low-pass filter (LPF). The HPF attenuates frequencies below its cutoff frequency ($\omega_{c1}$), while the LPF attenuates frequencies above its cutoff frequency ($\omega_{c2}$). When properly designed with $\omega_{c2} > \omega_{c1}$, the combined response creates a bandpass characteristic.
+
+The Sallen-Key topology offers a simple, low-component design with high input impedance and low output impedance, making it ideal for active filters with minimal component interaction and predictable performance.
+
+\section*{Sallen Key Filter Circuit}
+
+\begin{figure}[!ht]
+\centering
+\resizebox{0.8\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\LARGE]
+\draw (12.75,10.75) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
+\draw (opamp2.+) to[short] (11.25,11.25);
+\draw  (opamp2.-) to[short] (11.25,10.25);
+\draw (13.95,10.75) to[short](14.25,10.75);
+\draw (11.25,10.25) to[short] (11.25,9);
+\draw (11.25,9) to[short] (14,9);
+\draw (14,9) to[short] (14,10.75);
+\draw (14.25,10.75) to[short] (14.75,10.75);
+\draw (11.25,11.25) to[short] (10.5,11.25);
+\draw (10.5,11.25) to[european resistor] (10.5,8.75);
+\draw (7,11.25) to[european resistor] (8.75,11.25);
+\draw (8.75,11.25) to[european resistor] (10.5,11.25);
+\draw (8.75,11.25) to[short] (8.75,13.25);
+\draw (8.75,13.25) to[european resistor] (13.5,13.25);
+\draw (13.5,13.25) to[short] (13.5,10.75);
+\draw (7,11.25) to[short] (6.5,11.25);
+\node at (8.75,11.25) [circ] {};
+\node at (10.5,11.25) [circ] {};
+\node at (14,10.75) [circ] {};
+\node at (13.5,10.75) [circ] {};
+\node at (14.75,10.75) [circ] {};
+\node at (6.5,11.25) [circ] {};
+\node [font=\normalsize] at (6,11.25) {$V_{in}$};
+\node [font=\normalsize] at (15.25,10.75) {$V_{out}$};
+\node [font=\normalsize] at (7.75,10.75) {$Z_1$};
+\node [font=\normalsize] at (9.5,10.75) {$Z_2$};
+\node [font=\normalsize] at (10,10) {$Z_3$};
+\node [font=\normalsize] at (11,13.75) {$Z_4$};
+\node [font=\normalsize] at (8.75,11) {a};
+\node [font=\normalsize] at (10.75,11) {b};
+\draw (10.5,8.75) to (10.75,8.75) node[ground]{};
+\end{circuitikz}
+}%
+\end{figure}
+
+\subsection*{Derivation of Transfer function for Sallen Key Filter:\\}
+For ideal Op Amp,
+\begin{align*}
+V_b = V_{out}
+\end{align*}
+Applying KCL at a:
+\begin{align*}
+\frac{V_a - V_{in}}{Z_1} + \frac{V_a-V_b}{Z_2} + \frac{V_a-V_{out}}{Z_4} &= 0 \quad \text{-(1)}
+\end{align*}
+Applyting KCL at b:
+\begin{align*}
+\frac{V_b-V_a}{Z_2} + \frac{V_b-0}{Z_3} &= 0 \\
+V_b\left(\frac{1}{Z_2} + \frac{1}{Z_3}\right) &= \frac{V_a}{Z_2} \\
+V_a &= V_b Z_2\left(\frac{1}{Z_2} + \frac{1}{Z_3}\right)
+\end{align*}
+Simplifying (1)
+\begin{align*}
+V_a\left(\frac{1}{Z_1} + \frac{1}{Z_2} + \frac{1}{Z_4}\right) - \frac{V_{in}}{Z_1} &= V_{out}\left(\frac{1}{Z_2} + \frac{1}{Z_4}\right) \\
+V_{out} Z_2\left(\frac{1}{Z_2} + \frac{1}{Z_3}\right)\left(\frac{1}{Z_1} + \frac{1}{Z_2} + \frac{1}{Z_4}\right) - \frac{V_{in}}{Z_1} &= V_{out}\left(\frac{1}{Z_2} + \frac{1}{Z_4}\right) 
+\end{align*}
+\begin{align*}
+H(s) &= \frac{V_{out}}{V_{in}} = \frac{\frac{1}{Z_1}}{Z_2\left(\frac{1}{Z_2} + \frac{1}{Z_3}\right)\left(\frac{1}{Z_1} + \frac{1}{Z_2} + \frac{1}{Z_4}\right) - \left(\frac{1}{Z_2} + \frac{1}{Z_4}\right)} \\
+H(s) &= \frac{\frac{1}{Z_1}}{\frac{(Z_2+Z_3)(Z_1Z_2+Z_1Z_4+Z_2Z_4) - (Z_2+Z_4)Z_1Z_3}{Z_1Z_2Z_3Z_4}} \\
+ &= \frac{Z_2Z_3Z_4}{(Z_2+Z_3)(Z_1Z_2+Z_1Z_4+Z_2Z_4) - Z_1Z_3(Z_2+Z_4)} \\
+ &= \frac{Z_3Z_4}{Z_1Z_2^2 + Z_1Z_2Z_4 + Z_2^2Z_4 + Z_1Z_3Z_4} \\
+ &= \frac{Z_3Z_4}{Z_1Z_2 + Z_1Z_4 + Z_2Z_4 + Z_3Z_4}
+\end{align*}
+
+\section*{Theory}
+
+\subsection*{Bandpass Filter Principle}
+
+A bandpass filter allows signals within a specific frequency band to pass while attenuating signals outside this band. The transfer function of an ideal bandpass filter can be expressed as:
+
+\[
+H(j\omega) = 
+\begin{cases}
+1, & \text{if } \omega_1 < \omega < \omega_2 \\
+0, & \text{otherwise}
+\end{cases}
+\]
+
+Where $\omega_1 = 2\pi f_{c1}$ and $\omega_2 = 2\pi f_{c2}$ represent the lower and upper cutoff frequencies, respectively.
+
+\subsection*{Sallen-Key Filter Topology}
+
+The Sallen-Key topology is a versatile active filter configuration that uses an operational amplifier with RC components to create second-order filter responses. The general transfer function of a second-order Sallen-Key filter is:
+
+\[
+H(s) = \frac{A}{s^2 + (\omega_c/Q)s + \omega_c^2}
+\]
+
+Where:
 \begin{itemize}
-	\item Operational Amplifier (LM 358)
-    \item Resistors (selected for proper weighting)
-    \item DC Power Supply
-    \item Function Generator
-    \item Oscilloscope
+\item $\omega_c$ is the cutoff frequency
+\item $Q$ is the quality factor
+\item $A$ is the gain at passband
 \end{itemize}
 
-\section*{Theory and Circuit Design}
-\subsection*{Custom Weighted Summing and Difference Amplifier}
-This circuit implements the mathematical functions:
-\begin{align}
-    V_{out} &= 2V_1 + V_2 - V_3 \\
-    V_{out} &= 2V_1 - V_3
-\end{align}
-An inverting summing amplifier is used with appropriately chosen resistor values to achieve the desired coefficients.
-The output of an inverting summing amplifier is given by
-\begin{align}
-	V_{out} = -(\frac{R_f}{R_1} V_1 + \frac{R_f}{R_2} V_2)
-\end{align}
-By taking $R_f = 2R, R_1 = R$ and $R_2 = 2R$,
-\begin{align}
-	V_{out} = -(2V_1 + V_2)
-\end{align}
-Now by taking the output of this op amp and summing this output with another input voltage $V_3$ will give us the required output voltage. The output of the second op amp will be,
-\begin{align}
-	V_{out} = -(\frac{R_f}{R_1} (-2V_1 - V_2) + \frac{R_f}{R_2} V_3)
-\end{align}
-Taking $R_f = R_1 = R_2 = R$,
-\begin{align}
-	V_{out} = (2V_1 + V_2 - V_3)
-\end{align}
+\subsubsection*{Sallen-Key Low-Pass Filter}
 
-\subsection*{Circuit Diagram}
+\begin{figure}[!ht]
+\centering
+\resizebox{0.8\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\LARGE]
+\draw (12.75,10.75) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
+\draw (opamp2.+) to[short] (11.25,11.25);
+\draw  (opamp2.-) to[short] (11.25,10.25);
+\draw (13.95,10.75) to[short](14.25,10.75);
+\draw (11.25,10.25) to[short] (11.25,9);
+\draw (11.25,9) to[short] (14,9);
+\draw (14,9) to[short] (14,10.75);
+\draw (14.25,10.75) to[short] (14.75,10.75);
+\draw (11.25,11.25) to[short] (10.5,11.25);
+%\draw (10.5,11.25) to[european resistor] (10.5,8.75);
+\draw (10.5, 11.25) to[C] (10.5, 8.75);
+\draw (7,11.25) to[R] (8.75,11.25);
+\draw (8.75,11.25) to[R] (10.5,11.25);
+\draw (8.75,11.25) to[short] (8.75,13.25);
+\draw (8.75,13.25) to[C] (13.5,13.25);
+\draw (13.5,13.25) to[short] (13.5,10.75);
+\draw (7,11.25) to[short] (6.5,11.25);
+\node at (8.75,11.25) [circ] {};
+\node at (10.5,11.25) [circ] {};
+\node at (14,10.75) [circ] {};
+\node at (13.5,10.75) [circ] {};
+\node at (14.75,10.75) [circ] {};
+\node at (6.5,11.25) [circ] {};
+\node [font=\normalsize] at (6,11.25) {$V_{in}$};
+\node [font=\normalsize] at (15.25,10.75) {$V_{out}$};
+\node [font=\normalsize] at (7.75,10.75) {$R$};
+\node [font=\normalsize] at (9.5,10.75) {$R$};
+\node [font=\normalsize] at (9.75,10) {$C$};
+\node [font=\normalsize] at (11,14) {$C$};
+\node [font=\normalsize] at (8.75,11) {a};
+\node [font=\normalsize] at (10.75,11) {b};
+\draw (10.5,8.75) to (10.75,8.75) node[ground]{};
+\end{circuitikz}
+}%
+\end{figure}
+
+\begin{align*}
+Z_1 &= Z_2 = R_1\\
+Z_3 &= Z_4 = \frac{1}{SC_1}\\
+H(s) &= \frac{\left(\frac{1}{SC_1}\right)^2}{R_1^2 + \frac{2R_1}{SC_1} + (\frac{1}{SC_1})^2}\\
+H(s) &= \frac{1}{(1 + SR_1C_1)^2}
+\end{align*}
+
+The cutoff frequency for the Sallen-Key LPF is given by:
+
+\[
+\omega_{c_1} = \frac{1}{R_1C_1}
+\]
+
+\pagebreak
+\subsubsection*{Sallen-Key High-Pass Filter}
 
 \begin{figure}[!ht]
 \centering
 \resizebox{1\textwidth}{!}{%
 \begin{circuitikz}
 \tikzstyle{every node}=[font=\LARGE]
-\draw (10.25,14.75) node[op amp,scale=1] (opamp2) {};
-\draw (opamp2.+) to[short] (8.75,14.25);
-\draw  (opamp2.-) to[short] (8.75,15.25);
-\draw (11.45,14.75) to[short](11.75,14.75);
-\draw (8.25,14.25) to (8.25,13.25) node[ground]{};
-\draw (8.25,15.25) to[short] (8.25,16.75);
-\draw (8.25,16.75) to[R] (6.5,16.75);
-\draw (15.5,14.25) node[op amp,scale=1] (opamp2) {};
-\draw (opamp2.+) to[short] (14,13.75);
-\draw  (opamp2.-) to[short] (14,14.75);
-\draw (16.7,14.25) to[short](17,14.25);
-\draw (14,13.75) to (14,12.75) node[ground]{};
-\draw (8.25,15.75) to[R] (6.5,15.75);
-\node at (6.5,16.75) [circ] {};
-\node at (6.5,15.75) [circ] {};
-\node at (17,14.25) [circ] {};
-\node [font=\normalsize] at (6,16.75) {$V_1$};
-\node [font=\normalsize] at (6,15.75) {$V_2$};
-\node [font=\normalsize] at (12.5,15.25) {};
-\node [font=\normalsize] at (18.25,14.25) {$2V_1 + V_2 - V_3$};
-\draw (8.25,15.25) to[short] (8.75,15.25);
-\draw (8.25,14.25) to[short] (9,14.25);
-\draw (8.75,15.25) to[short] (8.75,16.5);
-\draw (11,16.25) to[short] (11,14.75);
-\draw (8.75,16.5) to[R] (11,16.5);
-\draw (11,16.5) to[short] (11,16);
-\draw (14.25,14.75) to[short] (14.25,16);
-\draw (16.5,16) to[short] (16.5,14.25);
-\draw (14.25,16) to[R] (16.5,16);
-\draw (13,14.75) to[R] (14,14.75);
-\draw (9.5,11.5) to[short] (12.5,11.5);
-\draw (12.5,11.5) to[short] (12.5,14);
-\draw (6.5,11.5) to[R] (8.25,11.5);
-\draw (14.25,14.75) to[short] (14.25,14);
-\draw (14.25,14) to[short] (13.75,14);
-\node at (6.5,11.5) [circ] {};
-\node [font=\normalsize] at (6,11.5) {$V_3$};
-\node [font=\normalsize] at (10,17) {2R};
-\node [font=\normalsize] at (15.25,16.5) {R};
-\node [font=\normalsize] at (13.5,15.25) {R};
-\node [font=\normalsize] at (7.25,11) {R};
-\node [font=\normalsize] at (7.25,17.25) {R};
-\node [font=\normalsize] at (7.25,15.25) {2R};
-\node at (11,14.75) [circ] {};
-\node [font=\normalsize] at (11.5,14.25) {$-2V_1 - V_2$};
-\draw (11.75,14.75) to[short] (13,14.75);
-\draw (8.25,11.5) to[short] (10.25,11.5);
-	\node [font=\normalsize] at (7.5,10.75) {};
-\draw (12.5,14) to[short] (14,14);
+\draw (12.75,10.75) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
+\draw (opamp2.+) to[short] (11.25,11.25);
+\draw  (opamp2.-) to[short] (11.25,10.25);
+\draw (13.95,10.75) to[short](14.25,10.75);
+\draw (11.25,10.25) to[short] (11.25,9);
+\draw (11.25,9) to[short] (14,9);
+\draw (14,9) to[short] (14,10.75);
+\draw (14.25,10.75) to[short] (14.75,10.75);
+\draw (11.25,11.25) to[short] (10.5,11.25);
+%\draw (10.5,11.25) to[european resistor] (10.5,8.75);
+\draw (10.5, 11.25) to[R] (10.5, 8.75);
+\draw (7,11.25) to[C] (8.75,11.25);
+\draw (8.75,11.25) to[C] (10.5,11.25);
+\draw (8.75,11.25) to[short] (8.75,13.25);
+\draw (8.75,13.25) to[R] (13.5,13.25);
+\draw (13.5,13.25) to[short] (13.5,10.75);
+\draw (7,11.25) to[short] (6.5,11.25);
+\node at (8.75,11.25) [circ] {};
+\node at (10.5,11.25) [circ] {};
+\node at (14,10.75) [circ] {};
+\node at (13.5,10.75) [circ] {};
+\node at (14.75,10.75) [circ] {};
+\node at (6.5,11.25) [circ] {};
+\node [font=\normalsize] at (6,11.25) {$V_{in}$};
+\node [font=\normalsize] at (15.25,10.75) {$V_{out}$};
+\node [font=\normalsize] at (7.75,10.5) {$C$};
+\node [font=\normalsize] at (9.5,10.5) {$C$};
+\node [font=\normalsize] at (10,10) {$R$};
+\node [font=\normalsize] at (11,13.75) {$R$};
+\node [font=\normalsize] at (8.75,11) {a};
+\node [font=\normalsize] at (10.75,11) {b};
+\draw (10.5,8.75) to (10.75,8.75) node[ground]{};
 \end{circuitikz}
 }%
-\label{fig:my_label}
 \end{figure}
+\begin{align*}
+Z_1 &= Z_2 = \frac{1}{SC_2}\\
+Z_3 &= Z_4 = R_2\\
+H(s) &= \frac{R_2^2}{R_2^2 + \frac{2R_2}{SC_2} + (\frac{1}{SC_2})^2}\\
+H(s) &= \frac{{(SR_2C_2)}^2}{(1 + SR_2C_2)^2}
+\end{align*}
 
-For the second part, to produce output voltage of $2V_1 - V_3$, make $V_2 = 0$, i.e., ground the terminal connecting $V_2$.
+The cutoff frequency for the Sallen-Key LPF is given by:
 
-\subsection*{Circuit Diagram}
+\[
+\omega_{c_2} = \frac{1}{R_2C_2}
+\]
+
+\pagebreak
+\subsection*{Cascaded Bandpass Filter}
+
 \begin{figure}[!ht]
 \centering
 \resizebox{1\textwidth}{!}{%
 \begin{circuitikz}
 \tikzstyle{every node}=[font=\normalsize]
-\draw (10.25,14.75) node[op amp,scale=1] (opamp2) {};
-\draw (opamp2.+) to[short] (8.75,14.25);
-\draw  (opamp2.-) to[short] (8.75,15.25);
-\draw (11.45,14.75) to[short](11.75,14.75);
-\draw (8.25,14.25) to (8.25,13.25) node[ground]{};
-\draw (8.25,15.25) to[short] (8.25,16.75);
-\draw (8.25,16.75) to[R] (6.5,16.75);
-\draw (15.5,14.25) node[op amp,scale=1] (opamp2) {};
-\draw (opamp2.+) to[short] (14,13.75);
-\draw  (opamp2.-) to[short] (14,14.75);
-\draw (16.7,14.25) to[short](17,14.25);
-\draw (14,13.75) to (14,12.75) node[ground]{};
-\draw (8.25,15.75) to[R] (6.5,15.75);
-\node at (6.5,16.75) [circ] {};
-\node at (6.5,15.75) [circ] {};
-\node at (17,14.25) [circ] {};
-\node [font=\normalsize] at (6,16.75) {$V_1$};
-\node [font=\normalsize] at (5.75,15.75) {$V_2 = 0$};
-\node [font=\normalsize] at (12.5,15.25) {};
-\node [font=\normalsize] at (18.25,14.25) {$2V_1 - V_3$};
-\draw (8.25,15.25) to[short] (8.75,15.25);
-\draw (8.25,14.25) to[short] (9,14.25);
-\draw (8.75,15.25) to[short] (8.75,16.5);
-\draw (11,16.25) to[short] (11,14.75);
-\draw (8.75,16.5) to[R] (11,16.5);
-\draw (11,16.5) to[short] (11,16);
-\draw (14.25,14.75) to[short] (14.25,16);
-\draw (16.5,16) to[short] (16.5,14.25);
-\draw (14.25,16) to[R] (16.5,16);
-\draw (13,14.75) to[R] (14,14.75);
-\draw (9.5,11.5) to[short] (12.5,11.5);
-\draw (12.5,11.5) to[short] (12.5,14);
-\draw (6.5,11.5) to[R] (8.25,11.5);
-\draw (14.25,14.75) to[short] (14.25,14);
-\draw (14.25,14) to[short] (13.75,14);
-\node at (6.5,11.5) [circ] {};
-\node [font=\normalsize] at (6,11.5) {$V_3$};
-\node [font=\normalsize] at (10,17) {2R};
-\node [font=\normalsize] at (15.25,16.5) {R};
-\node [font=\normalsize] at (13.5,15.25) {R};
-\node [font=\normalsize] at (7.25,11) {R};
-\node [font=\normalsize] at (7.25,17.25) {R};
-\node [font=\normalsize] at (7.25,15.25) {2R};
-\node at (11,14.75) [circ] {};
-\node [font=\normalsize] at (11.5,14.25) {$-2V_1 - V_2$};
-\draw (11.75,14.75) to[short] (13,14.75);
-\draw (8.25,11.5) to[short] (10.25,11.5);
-\node [font=\normalsize] at (7.5,10.75) {};
-\draw (12.5,14) to[short] (14,14);
-\draw (6.5,15.75) to (6.5,15) node[ground]{};
+\draw (3.75,13) to[R,l={ \normalsize R}] (6.25,13);
+\draw (4.5,13) to[short, -o] (3.75,13) ;
+\draw (6.25,13) to[short] (6.25,14.25);
+\draw (6.25,13) to[R,l={ \normalsize R}] (8,13);
+\draw (10.25,12.5) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
+\draw (opamp2.+) to[short] (8.75,13);
+\draw  (opamp2.-) to[short] (8.75,12);
+\draw (11.45,12.5) to[short](11.75,12.5);
+\draw (8,13) to[C,l={ \normalsize C}] (8,10.5);
+\draw (8,13) to[short] (8.75,13);
+\draw (6.25,14.25) to[C,l={ \normalsize C}] (11.75,14.25);
+\draw (11.75,14.25) to[short] (11.75,10.5);
+\draw (11.75,12.5) to[C,l={ \normalsize C}] (13.75,12.5);
+\draw (13.75,12.5) to[C,l={ \normalsize C}] (16.25,12.5);
+\draw (17.75,12) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
+\draw (opamp2.+) to[short] (16.25,12.5);
+\draw  (opamp2.-) to[short] (16.25,11.5);
+\draw (18.95,12) to[short](19.25,12);
+\draw (15.75,12.5) to[R,l={ \normalsize R}] (15.75,9.5);
+\draw (13.75,14.25) to[R,l={ \normalsize R}] (19.25,14.25);
+\draw (13.75,12.5) to[short] (13.75,14.25);
+\draw (16.25,11.5) to[short] (16.25,9.25);
+\draw (16.25,9.25) to[short] (19.25,9.25);
+\draw (19.25,9.25) to[short] (19.25,14.25);
+\draw (19.25,12) to[short, -o] (20,12) ;
+\draw (15.75,10.25) to (15.75,9.25) node[ground]{};
+\draw (8,11.25) to (8,10.25) node[ground]{};
+\draw (8.75,12) to[short] (8.75,10.5);
+\draw (8.75,10.5) to[short] (11.75,10.5);
+\draw (17.75,12) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
+\draw (opamp2.+) to[short] (16.25,12.5);
+\draw  (opamp2.-) to[short] (16.25,11.5);
+\draw (18.95,12) to[short](19.25,12);
 \end{circuitikz}
 }%
+
 \label{fig:my_label}
 \end{figure}
 
+When an HPF with cutoff frequency $\omega_{c1}$ is cascaded with an LPF with cutoff frequency $\omega_{c2}$ (where $\omega_{c2} > \omega_{c1}$), the resulting system functions as a bandpass filter with:
 
-\pagebreak
-\subsection*{Op-Amp Integrator}
-This circuit performs mathematical integration:
-\begin{equation}
-    V_{out} = - \frac{1}{RC} \int V_{in} dt
-\end{equation}
-In the below circuit, on applying nodal analysis at point $A$, 
-\begin{align}
-	\frac{V_a - V_{in}}{R} + I_C &= 0\\
-	\frac{V_a - V_{in}}{R} + C\frac{dV_C}{dt} &= 0
-\end{align}
-In case of an ideal op amp, $V_A = 0$,
-\begin{align}
-	\frac{V_{in}}{R} &= C\frac{dv}{dt}\\
-	\int{dv} &= \frac{1}{RC}\int{V_{in}} dt\\
-	0 - V_{out} &= \frac{1}{RC}\int{V_{in}} dt\\
-	V_{out} &= -\frac{1}{RC}\int{V_{in}} dt
-\end{align}
+\begin{itemize}
+\item Lower cutoff frequency: $\omega_{c1}$
+\item Upper cutoff frequency: $\omega_{c2}$
+\item Bandwidth: $BW = \omega_{c2} - \omega_{c1}$
+\item Center frequency: $\omega_0 = \sqrt{\omega_{c1}\omega_{c2}}$
+\end{itemize}
 
-\pagebreak
-\subsection*{Circuit Diagram}
+The overall transfer function becomes the product of the individual transfer functions:
 
-\begin{figure}[!ht]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\normalsize]
-\draw (14.25,14.25) node[op amp,scale=1] (opamp2) {};
-\draw (opamp2.+) to[short] (12.75,13.75);
-\draw  (opamp2.-) to[short] (12.75,14.75);
-\draw (15.45,14.25) to[short](15.75,14.25);
-\draw (10.5,14.75) to[R] (12.75,14.75);
-\draw (12.75,13.75) to (12.75,12.5) node[ground]{};
-\draw (12.75,14.75) to[short] (12.75,16.5);
-\draw (12.75,16.5) to[C] (15.5,16.5);
-\draw (15.5,16.5) to[short] (15.5,14.25);
-\draw (15.75,14.25) to[short] (16.25,14.25);
-\node at (10.5,14.75) [circ] {};
-\node at (16.25,14.25) [circ] {};
-\node [font=\normalsize] at (10,14.75) {$V_{in}$};
-\node [font=\normalsize] at (14.25,17.25) {$C$};
-\node [font=\normalsize] at (16.75,14.25) {$V_{out}$};
-\node [font=\normalsize] at (11.5,15.25) {$R$};
-\node [font=\normalsize] at (12.75,14.5) {$A$};
-\node at (12.75,14.75) [circ] {};
-\draw [->, >=Stealth] (12.75,15.25) -- (12.75,15.75);
-\node [font=\normalsize] at (12.25,15.75) {$I_C$};
-\end{circuitikz}
-}%
-\label{fig:my_label}
-\end{figure}
+\[
+H_{BPF}(s) = H_{HPF}(s) \cdot H_{LPF}(s)
+\]
+\begin{align*}
+    H_{BPF}(s) = \frac{{(SR_1C_1)}^2}{(1 + SR_1C_1)^2(1 + SR_2C_2)^2}
+\end{align*}
 
-\section*{Precision Rectifier}
-Here, the aim is to use the op amp to control a diode for full-wave rectifier and a half-wave rectifier.
-The reason why we use the op amp is because the diode has a threshold voltage of $0.7V$. To reduce that voltage to $0V$, we use the op amp. Depending on the amount of load resistance given to the op amp, a full or a half wave rectifier can be achieved.
+\section*{Procedure}
 
-\subsection*{Circuit Diagram}
+\subsection*{Components}
 
-\subsubsection*{Half wave rectifier}
-\pagebreak
-\begin{figure}[!ht]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\normalsize]
-\draw[domain=5:12.75,samples=100,smooth] plot (\x,{1.3*sin(5*\x r -5 r ) + 17.5});
-\draw[domain=5.4:6.03,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=6.65:7.28,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=7.91:8.54,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=9.17:9.8,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=10.43:11.06,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=11.68:12.31,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw [->, >=Stealth] (5,17.5) -- (13.5,17.5);
-\draw [->, >=Stealth] (5,16) -- (5,19.25);
-\draw [->, >=Stealth] (5,13.75) -- (13.5,13.75);
-\draw [->, >=Stealth] (5,13.25) -- (5,15.5);
-\node [font=\normalsize] at (5,19.5) {$V_{in}$};
-\node [font=\normalsize] at (5,15.75) {$V_{out}$};
-\end{circuitikz}
-}%
-\label{fig:my_label}
-\end{figure}
-\textbf{Negative Half Cycle:}
-The upper diode is in reverse-bias condition while the lower diode is in forward-bias condition. This will lead to $V_{out} = -\left(\frac{R_2}{R_1}\right)V_{in}$. Here, $R_2 = R_1$, so $V_{out} = -V_{in}$. \newline
+For this experiment, we select the following components:
+\begin{itemize}
+\item Operational Amplifier: LM358 (or equivalent)
+\item Resistors: $R_1 = R_2 = 1k\Omega$ (for LPF),  $R_3 = R_4 = 15k\Omega$ (for HPF)
+\item Capacitors: $C_1 = C_2 = 1nF$ (for LPF), $C_3 = C_4 = 1nF$ (for HPF)
+\end{itemize}
 
+The theoretical cutoff frequencies are:
+\begin{itemize}
+\item HPF: $\omega_{c1} = \frac{1}{(\sqrt{R_1R_2C_1C_2})} = \frac{10^6}{15}$ 
+\item LPF: $\omega_{c2} = \frac{1}{(\sqrt{R_3R_4C_3C_4})} = 10^6$
+\end{itemize}
 
-\begin{figure}[!ht]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\normalsize]
-\draw (14,14) node[op amp,scale=1] (opamp2) {};
-\draw (opamp2.+) to[short] (12.5,13.5);
-\draw  (opamp2.-) to[short] (12.5,14.5);
-\draw (15.2,14) to[short](15.5,14);
-\draw (12.5,14.5) to[R] (10.25,14.5);
-\draw (12.5,13.5) to (12.5,12.25) node[ground]{};
-\draw (12.5,14.5) to[short] (12.5,16.25);
-%\draw (12.5,16.25) to[D] (15.25,16.25);
-\draw(12.5, 16.25) to (13.25, 16.25);
-\draw (14.25, 16.25) to (15.25, 16.25);
-\draw (15.25,16.25) to[short] (15.25,14);
-\draw (15.5,14) to[D] (17.5,14);
-\draw (12.5,16.25) to[short] (12.5,17.25);
-\draw (12.5,17.25) to[R] (17.25,17.25);
-\draw (17.25,17.25) to[short] (17.25,14);
-\draw (17.5,14) to[short] (18,14);
-\draw (18,14) to[R] (18,12.25);
-\draw (18,12.5) to (18,12.25) node[ground]{};
-\node at (10.25,14.5) [circ] {};
-\node at (12.5,16.25) [circ] {};
-\node at (12.5,14.5) [circ] {};
-\node at (15.25,14) [circ] {};
-\node at (17.25,14) [circ] {};
-\node [font=\normalsize] at (15,17.75) {$R_2$};
-\node [font=\normalsize] at (11.25,15) {$R_1$};
-\node [font=\normalsize] at (18.75,13) {$R_3$};
-\draw (10.25,14.5) to[sinusoidal voltage source, sources/symbol/rotate=auto] (10.25,12.25);
-\draw (10.25,12.5) to (10.25,12.25) node[ground]{};
-\node [font=\normalsize] at (9.5,13.25) {$V_{in}$};
-\node [font=\normalsize] at (17.75,14.25) {$V_{out}$};
-\end{circuitikz}
-}%
-\label{fig:my_label}
-\end{figure}
-\textbf{Positive Half Cycle:}
-The lower diode is in reverse-bias condition, while the upper diode is in forward-bias condition. So there is no path for current to flow, so $V_{out} = V_- = V_+ = 0$
-\begin{figure}[!h]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\normalsize]
-\draw (14,14) node[op amp,scale=1] (opamp2) {};
-\draw (opamp2.+) to[short] (12.5,13.5);
-\draw  (opamp2.-) to[short] (12.5,14.5);
-\draw (15.2,14) to[short](15.5,14);
-\draw (12.5,14.5) to[R] (10.25,14.5);
-\draw (12.5,13.5) to (12.5,12.25) node[ground]{};
-\draw (12.5,14.5) to[short] (12.5,16.25);
-\draw (12.5,16.25) to[D] (15.25,16.25);
-%\draw(12.5, 16.25) to (13.25, 16.25);
-\draw (14.25, 16.25) to (15.25, 16.25);
-\draw (15.25,16.25) to[short] (15.25,14);
-%\draw (15.5,14) to[D] (17.5,14);
-\draw (15.5, 14) to (15.75, 14);
-\draw(16.5, 14) to (17.5, 14);
-\draw (12.5,16.25) to[short] (12.5,17.25);
-\draw (12.5,17.25) to[R] (17.25,17.25);
-\draw (17.25,17.25) to[short] (17.25,14);
-\draw (17.5,14) to[short] (18,14);
-\draw (18,14) to[R] (18,12.25);
-\draw (18,12.5) to (18,12.25) node[ground]{};
-\node at (10.25,14.5) [circ] {};
-\node at (12.5,16.25) [circ] {};
-\node at (12.5,14.5) [circ] {};
-\node at (15.25,14) [circ] {};
-\node at (17.25,14) [circ] {};
-\node [font=\normalsize] at (15,17.75) {$R_2$};
-\node [font=\normalsize] at (11.25,15) {$R_1$};
-\node [font=\normalsize] at (18.75,13) {$R_3$};
-\draw (10.25,14.5) to[sinusoidal voltage source, sources/symbol/rotate=auto] (10.25,12.25);
-\draw (10.25,12.5) to (10.25,12.25) node[ground]{};
-\node [font=\normalsize] at (9.5,13.25) {$V_{in}$};
-\node [font=\normalsize] at (17.75,14.25) {$V_{out}$};
-\end{circuitikz}
-}%
-\label{fig:my_label}
-\end{figure}
-\newline
-\textbf{Circuit Diagram}
-\begin{figure}[!h]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\normalsize]
-\draw (14,14) node[op amp,scale=1] (opamp2) {};
-\draw (opamp2.+) to[short] (12.5,13.5);
-\draw  (opamp2.-) to[short] (12.5,14.5);
-\draw (15.2,14) to[short](15.5,14);
-\draw (12.5,14.5) to[R] (10.25,14.5);
-\draw (12.5,13.5) to (12.5,12.25) node[ground]{};
-\draw (12.5,14.5) to[short] (12.5,16.25);
-\draw (12.5,16.25) to[D] (15.25,16.25);
-\draw (15.25,16.25) to[short] (15.25,14);
-\draw (15.5,14) to[D] (17.5,14);
-\draw (12.5,16.25) to[short] (12.5,17.25);
-\draw (12.5,17.25) to[R] (17.25,17.25);
-\draw (17.25,17.25) to[short] (17.25,14);
-\draw (17.5,14) to[short] (18,14);
-\draw (18,14) to[R] (18,12.25);
-\draw (18,12.5) to (18,12.25) node[ground]{};
-\node at (10.25,14.5) [circ] {};
-\node at (12.5,16.25) [circ] {};
-\node at (12.5,14.5) [circ] {};
-\node at (15.25,14) [circ] {};
-\node at (17.25,14) [circ] {};
-\node [font=\normalsize] at (15,17.75) {$1 k\Omega$};
-\node [font=\normalsize] at (11.25,15) {$1 k\Omega$};
-\node [font=\normalsize] at (18.75,13) {$180 \Omega$};
-\draw (10.25,14.5) to[sinusoidal voltage source, sources/symbol/rotate=auto] (10.25,12.25);
-\draw (10.25,12.5) to (10.25,12.25) node[ground]{};
-\node [font=\normalsize] at (9.5,13.25) {$V_{in}$};
-\node [font=\normalsize] at (17.75,14.25) {$V_{out}$};
-\end{circuitikz}
-}%
-\label{fig:my_label}
-\end{figure}
-\pagebreak
+\subsection*{High-Pass Filter Implementation}
 
-\subsubsection*{Full wave rectifier}
-\begin{figure}[!ht]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\normalsize]
-\draw[domain=5:12.75,samples=100,smooth] plot (\x,{1.3*sin(5*\x r -5 r ) + 17.5});
-\draw[domain=5:5.4,samples=100,smooth] plot (\x,{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=5.4:6.03,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=6.03:6.65,samples=100,smooth] plot (\x,{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=6.65:7.28,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=7.28:7.91,samples=100,smooth] plot (\x,{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=7.91:8.54,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=8.54:9.17,samples=100,smooth] plot (\x,{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=9.17:9.8,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=9.8:10.43,samples=100,smooth] plot (\x,{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=10.43:11.06,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=11.06:11.68,samples=100,smooth] plot (\x,{1.3*sin(5*\x r -5 r ) +13.75});
-\draw[domain=11.68:12.31,samples=100,smooth] plot (\x,-{1.3*sin(5*\x r -5 r ) +13.75});
-\draw [->, >=Stealth] (5,17.5) -- (13.5,17.5);
-\draw [->, >=Stealth] (5,16) -- (5,19.25);
-\draw [->, >=Stealth] (5,13.75) -- (13.5,13.75);
-\draw [->, >=Stealth] (5,13.25) -- (5,15.5);
-\node [font=\normalsize] at (5,19.5) {$V_{in}$};
-\node [font=\normalsize] at (5,15.75) {$V_{out}$};
-\end{circuitikz}
-}%
-\label{fig:my_label}
-\end{figure}
-\textbf{Negative Half Cycle:}
-The diode is in forward-bias condition. This will lead to $V_{out} = -\left(\frac{R_2}{R_1}\right)V_{in}$. Here, $R_2 = R_1$, so $V_{out} = -V_{in}$. \newline
-\begin{figure}[!ht]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\normalsize]
-\draw (14,14) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
-\draw (opamp2.+) to[short] (12.5,14.5);
-\draw  (opamp2.-) to[short] (12.5,13.5);
-\draw (15.2,14) to[short](15.5,14);
-\draw (12.5,14.5) to[R] (10.25,14.5);
-\draw (12.5,13.5) to (12.5,12.25) node[ground]{};
-\draw (12.5,14.5) to[short] (12.5,16.25);
-\draw (14.75,14) to[D] (16.75,14);
-\draw (12.5,16.25) to[R] (16.75,16.25);
-\draw (16.75,16.25) to[short] (16.75,14);
-\draw (16.75,14) to[short] (18,14);
-\draw (18,14) to[R] (18,12.25);
-\draw (18,12.5) to (18,12.25) node[ground]{};
-\node at (10.25,14.5) [circ] {};
-\node at (12.5,14.5) [circ] {};
-\node at (16.75,14) [circ] {};
-\node [font=\normalsize] at (14.75,16.75) {$R_1$};
-\node [font=\normalsize] at (11.25,15) {$R_2$};
-\node [font=\normalsize] at (18.75,13) {$1 M\Omega$};
-\draw (10.25,14.5) to[sinusoidal voltage source, sources/symbol/rotate=auto] (10.25,12.25);
-\draw (10.25,12.5) to (10.25,12.25) node[ground]{};
-\node [font=\normalsize] at (9.5,13.25) {$V_{in}$};
-\node [font=\normalsize] at (17.5,14.25) {$V_{out}$};
-\end{circuitikz}
-}%
-\label{fig:my_label}
-\end{figure}
-
-
-
-\textbf{Positive Half Cycle:}
-The diode is in reverse-bias condition. So current flows through the feedback loop, through the $1M\Omega$ resistor, thus forming a loop. Now we can find $V_{out}$ by solving the voltage divider circuit. Here, as $1M\Omega$ is a large resistance, most of the potential drop will be across it, so $V_{out} \approx V_{in}$
-\begin{figure}[!ht]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\normalsize]
-\draw (14,14) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
-\draw (opamp2.+) to[short] (12.5,14.5);
-\draw  (opamp2.-) to[short] (12.5,13.5);
-\draw (15.2,14) to[short](15.5,14);
-\draw (12.5,14.5) to[R] (10.25,14.5);
-\draw (12.5,13.5) to (12.5,12.25) node[ground]{};
-\draw (12.5,14.5) to[short] (12.5,16.25);
-%\draw (14.75,14) to[D] (16.75,14);
-\draw (14.75, 14) to (15.25, 14);
-\draw (16.25, 14) to (16.75, 14);
-\draw (12.5,16.25) to[R] (16.75,16.25);
-\draw (16.75,16.25) to[short] (16.75,14);
-\draw (16.75,14) to[short] (18,14);
-\draw (18,14) to[R] (18,12.25);
-\draw (18,12.5) to (18,12.25) node[ground]{};
-\node at (10.25,14.5) [circ] {};
-\node at (12.5,14.5) [circ] {};
-\node at (16.75,14) [circ] {};
-\node [font=\normalsize] at (14.75,16.75) {$R_1$};
-\node [font=\normalsize] at (11.25,15) {$R_2$};
-\node [font=\normalsize] at (18.75,13) {$1 M\Omega$};
-\draw (10.25,14.5) to[sinusoidal voltage source, sources/symbol/rotate=auto] (10.25,12.25);
-\draw (10.25,12.5) to (10.25,12.25) node[ground]{};
-\node [font=\normalsize] at (9.5,13.25) {$V_{in}$};
-\node [font=\normalsize] at (17.5,14.25) {$V_{out}$};
-\end{circuitikz}
-}%
-\label{fig:my_label}
-\end{figure}
-
-\textbf{Circuit Diagram}
-
-\begin{figure}[!ht]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\normalsize]
-\draw (14,14) node[op amp,scale=1, yscale=-1 ] (opamp2) {};
-\draw (opamp2.+) to[short] (12.5,14.5);
-\draw  (opamp2.-) to[short] (12.5,13.5);
-\draw (15.2,14) to[short](15.5,14);
-\draw (12.5,14.5) to[R] (10.25,14.5);
-\draw (12.5,13.5) to (12.5,12.25) node[ground]{};
-\draw (12.5,14.5) to[short] (12.5,16.25);
-\draw (14.75,14) to[D] (16.75,14);
-\draw (12.5,16.25) to[R] (16.75,16.25);
-\draw (16.75,16.25) to[short] (16.75,14);
-\draw (16.75,14) to[short] (18,14);
-\draw (18,14) to[R] (18,12.25);
-\draw (18,12.5) to (18,12.25) node[ground]{};
-\node at (10.25,14.5) [circ] {};
-\node at (12.5,14.5) [circ] {};
-\node at (16.75,14) [circ] {};
-\node [font=\normalsize] at (14.75,16.75) {$1 k\Omega$};
-\node [font=\normalsize] at (11.25,15) {$1 k\Omega$};
-\node [font=\normalsize] at (18.75,13) {$1 M\Omega$};
-\draw (10.25,14.5) to[sinusoidal voltage source, sources/symbol/rotate=auto] (10.25,12.25);
-\draw (10.25,12.5) to (10.25,12.25) node[ground]{};
-\node [font=\normalsize] at (9.5,13.25) {$V_{in}$};
-\node [font=\normalsize] at (17.5,14.25) {$V_{out}$};
-\end{circuitikz}
-}%
-\label{fig:my_label}
-\end{figure}
-
-
-\section*{Experimental Procedure}
 \begin{enumerate}
-    \item Set up the required circuit on a breadboard as per the theoretical circuit design.
-    \item Provide appropriate input signals using a function generator.
-    \item Observe and record the output waveforms using an oscilloscope.
-    \item Compare the experimental results with the theoretical predictions.
-    \item Repeat the process for each circuit configuration.
+\item Assemble the Sallen-Key HPF circuit on the breadboard according to the circuit diagram.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figs/highpass_ciruit.jpeg}
+    \caption{High Pass Filter circuit}
+    \label{fig:enter-label}
+\end{figure}
+\item Connect the function generator to provide a sine wave input.
+\item Connect the oscilloscope to measure both input and output signals.
+\item Vary the input frequency by atleast doubling each time.
+\item For each frequency, measure the output voltage and calculate the gain ($V_{out}/V_{in}$).
+\item Record the measurements in a table and plot the bode plot.
 \end{enumerate}
 
-\section*{Results and Observations}
-\subsection*{Weighted Adder}
-\subsubsection*{$2V_1 + V_2 - V_3$}
-Here, $V_1 = V_3 = 1V, V_2 = 5V$, \begin{align*}2V_1+V_2-V_3 = 6V\end{align*}
+\subsection*{4.3 Low-Pass Filter Implementation}
+
+\begin{enumerate}
+\item Assemble the Sallen-Key LPF circuit on the breadboard as shown.
 \begin{figure}[h!]
-   \centering
-   \includegraphics[width=\columnwidth]{figs/input1.png}
-   \caption{Input}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/lowpass_circuit.jpeg}
+    \caption{High Pass Filter circuit}
+    \label{fig:enter-label}
 \end{figure}
 \pagebreak
-\begin{figure}[!h]
-	\begin{subfigure}[b]{100pt}
-		\caption{Output}
-		\includegraphics[width = 260pt]{figs/1add1.png}
-	\end{subfigure}
-	\hspace{110pt}
-	\begin{subfigure}[b]{100pt}
-		\caption{Circuit}
-		\includegraphics[width = 180pt]{figs/1add2.png}
-	\end{subfigure}
-\end{figure}
-\pagebreak
-\subsubsection*{$2V_1 - V_3$}
-Here, $V_1 = 5V, V_3 = 1V$, \begin{align*}2V_1-V_3 = 6V\end{align*}
+\item Repeat the measurement procedure as in the HPF implementation.
+\item Record the measurements and plot the bode plot.
+\end{enumerate}
+
+\subsection*{4.4 Bandpass Filter Implementation}
+
+\begin{enumerate}
+\item Connect the output of the HPF to the input of the LPF to form the bandpass filter.
 \begin{figure}[h!]
-   \centering
-   \includegraphics[scale = 0.2]{figs/input2.png}
-   \caption{Input}
-\end{figure}
-\begin{figure}[!h]
-	\begin{subfigure}[b]{100pt}
-		\caption{Output}
-		\includegraphics[width = 290pt]{figs/2add1.png}
-	\end{subfigure}
-	\hspace{110pt}
-	\begin{subfigure}[b]{100pt}
-		\caption{Circuit}
-		\includegraphics[width = 157pt]{figs/2add2.png}
-	\end{subfigure}
-\end{figure}
-
-\pagebreak
-\subsection*{Integrator Op-Amp}
-Here, input wave is a square wave (triangle), so its integration will result in a triangle wave. Amplitude of triangle wave will be $\frac{t}{2RC}V_{max}$. \newline Here, $R = 10k\Omega, C = 10\mu F, V_{max} = 4V, t = 10 ms$. So, amplitude comes out to be $200mV$
-\begin{figure}[!h]
-	\begin{subfigure}[b]{100pt}
-		\caption{Output vs Input}
-		\includegraphics[width = 230pt]{figs/int1.png}
-	\end{subfigure}
-	\hspace{110pt}
-	\begin{subfigure}[b]{100pt}
-		\caption{Circuit}
-		\includegraphics[width = 196pt]{figs/int2.png}
-	\end{subfigure}
-\end{figure}
-\subsection*{Rectifier}
-\subsubsection*{Half-Wave}
-\begin{figure}[!h]
-	\begin{subfigure}[b]{100pt}
-		\caption{Output vs Input}
-		\includegraphics[width = 230pt]{figs/half1.png}
-	\end{subfigure}
-	\hspace{110pt}
-	\begin{subfigure}[b]{100pt}
-		\caption{Circuit}
-		\includegraphics[width = 183pt]{figs/half2.png}
-	\end{subfigure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/bandpass_circuit.jpeg}
+    \caption{High Pass Filter circuit}
+    \label{fig:enter-label}
 \end{figure}
 \pagebreak
-\subsubsection*{Full-Wave}
-\begin{figure}[!h]
-	\begin{subfigure}[b]{100pt}
-		\caption{Output vs Input}
-		\includegraphics[width = 230pt]{figs/full1.png}
-	\end{subfigure}
-	\hspace{110pt}
-	\begin{subfigure}[b]{100pt}
-		\caption{Circuit}
-		\includegraphics[width = 192pt]{figs/full2.png}
-	\end{subfigure}
+\item Repeat the measurement procedure across the frequency range.
+\item Record the measurements and plot the bode plot.
+\end{enumerate}
+
+\section*{5 Results and Observations}
+
+Low Pass,
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$\mathbf{\log{\omega}}$ & $\mathbf{20\log{H(j\omega)}}$ \\
+\hline
+2.50 & 0.00 \\
+2.80 & 0.00 \\
+3.10 & 0.00 \\
+3.50 & 0.00 \\
+3.97 & 0.00 \\
+4.50 & 0.00 \\
+5.10 & 0.00 \\
+5.40 & 0.00 \\
+5.70 & -6.38 \\
+6.10 & -13.98 \\
+6.50 & -27.96 \\
+\hline
+\end{tabular}
+\caption{Low pass filter}
+\end{table}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figs/lowpass_graph.jpeg}
+    \caption{Low Pass Filter Graph}
+    \label{fig:enter-label}
+\end{figure}
+HighPass,
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$\mathbf{\log{\omega}}$ & $\mathbf{20\log{H}}$ \\
+\hline
+3.28 & -58.06 \\
+3.50 & -54.62 \\
+3.80 & -42.92 \\
+4.10 & -31.93 \\
+4.50 & -18.06 \\
+4.80 & -9.28 \\
+5.10 & -4.53 \\
+5.40 & -3.25 \\
+5.50 & -2.87 \\
+5.70 & -1.58 \\
+\hline
+\end{tabular}
+\caption{High pass filter}
+\end{table}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figs/highpass_graph.jpeg}
+    \caption{High Pass Filter Graph}
+    \label{fig:enter-label}
 \end{figure}
 
-\section*{Conclusion}
-The experiment successfully demonstrated the functionality of different op-amp applications, including summing and difference amplification, integration, and precision rectification. The observed outputs were consistent with theoretical calculations, validating the practical applications of operational amplifiers.
 
+BandPass,
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$\mathbf{\log{\omega}}$ & $\mathbf{20\log{H}}$ \\
+\hline
+4.50 & -20.67 \\
+4.80 & -9.90 \\
+4.97 & -5.85 \\
+5.28 & -3.44 \\
+5.50 & -3.44 \\
+5.80 & -5.69 \\
+6.10 & -15.88 \\
+6.20 & -20.98 \\
+\hline
+\end{tabular}
+\caption{Band pass filter}
+\label{tab:w_vs_H}
+\end{table}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figs/bandpass_graph.jpeg}
+    \caption{Band Pass Filter Graph}
+    \label{fig:enter-label}
+\end{figure}
+
+Images of oscilloscope while capturing response may be found in the respective folders in the below link, \url{https://github.com/ArjunPavanje/EE1200/tree/main/Experiment_6/figs}
+
+
+\section*{7 Conclusion}
+This experiment demonstrates how Sallen-Key filters can be constructed, and how a high pass and a lowpass filter together can be used to create a bandpass filter.
 \end{document}
 
