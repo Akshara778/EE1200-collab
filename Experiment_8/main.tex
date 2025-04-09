@@ -10,14 +10,13 @@
 \usepackage{karnaugh-map}
 \usepackage{subcaption}
 
-
-\title{\textbf{Lab Report: Experiment 7}}
+\title{\textbf{Lab Report: Experiment 8}}
 \author{EE24BTECH11003 : Akshara Sarma Chennubhatla\\EE24BTECH11005 : Arjun Pavanje}
 
 \begin{document}
 \maketitle
 \begin{center}
-	\textbf{Experiment:}\\Designing an asynchronous\\mod 7 counter using\\T Flip-Flops 
+	\textbf{Experiment:}\\Designing a synchronous 0-99 counter\\with buttons for increment and decrement\\using 8 T flip-flops
 \end{center}
 \vspace{30pt}
 \begin{figure}[h!]
@@ -31,229 +30,46 @@
 \end{center}
 \newpage
 
+\section{Objective}
+To design and implement a digital up/down counter that displays the number of people currently in the mess during peak lunch hours. The system will help students decide whether they can enter the mess based on the current occupancy. The maximum count is set to 99.
+\section{Materials Required:}
 
-\section{Introduction}
+\begin{itemize}
+    \item IR Sensors or Ultrasonic Sensors (for detecting entry/exit)
+    
+    \item 7-Segment Display (2-digit, Common Anode or Cathode) OR LCD Display
+    
+    \item Push Buttons (for simulation purposes if sensors are unavailable)
+    
+    \item Power Supply (5V DC for microcontroller and display)
+    
+    \item Breadboard \& Jumper Wires
+    
+    \item Resistors (1k$\Omega$, 330$\Omega$ for display connections)
+    
+    \item LEDs (Optional for indication of Full/Available status)
 
-This experiment focuses on designing and implementing a Mod-7 asynchronous counter using T flip-flops, using clock from an Arduino.
 
-\section{Theory}
-\subsection{T Flip-Flop}
+\end{itemize}
 
-\begin{figure}[!ht]
-\centering
-\resizebox{0.6\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\large]
-\draw  (6.25,13) rectangle (8.75,10.5);
-\draw [short] (6.25,12.5) -- (5,12.5);
-\draw [short] (6.25,11) -- (5,11);
-\draw [short] (8.75,12.5) -- (10,12.5);
-\draw [short] (8.75,11) -- (10,11);
-\node [font=\normalsize] at (4.2,12.5) {Input};
-\node [font=\normalsize] at (4.25,11) {Clock};
-\node [font=\large] at (6.75,12.5) {\textbf{T}};
-\node [font=\large] at (7,11) {\textbf{CLK}};
-\node [font=\large] at (8.4,12.5) {\textbf{Q}};
-\node [font=\large] at (8.4,11) {$\mathbf{\overline{Q}}$};
-\end{circuitikz}
-}%
-
-\label{fig:my_label}
-\end{figure}
-
-The Toggle Flip-Flop also known as T Flip-Flop is a type of Flip-Flop in which the output takes in the input value if the state of T is high (T = 0) and takes the value of the complement of the input if T is low (T = 1). This happens when the clock is high. When the clock is low, the output retains its previous state.
-\begin{align*}
-    Q_{n + 1} = 
-    \begin{cases}
-        Q_n &, T = 0\\\\
-        \overline{Q_n} &, T = 1
-    \end{cases}
-\end{align*}
-The Truth table for the Flip-Flop is,\\
-\begin{table}[h]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-$T$ & $Q_n$ & $Q_{n+1}$ \\
-\hline
-0 & 0 & 0 \\
-0 & 1 & 1 \\
-1 & 0 & 1 \\
-1 & 1 & 0 \\
-\hline
-\end{tabular}
-\end{table}
-
-The internal Circuit diagram of the T Flip-Flop is given below,
-\pagebreak
+\section{Circuit}
 \begin{figure}[h!]
-\centering
-\resizebox{1\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\large]
-\draw (7.5,14.5) to[short] (7.75,14.5);
-\draw (7.5,14) to[short] (7.75,14);
-\draw (7.75,14.5) node[ieeestd and port, anchor=in 1, scale=0.89](port){} (port.out) to[short] (9.5,14.25);
-\draw (port.left) to[short] (7.5,14.25);
-\draw (7.5,10.75) to[short] (7.75,10.75);
-\draw (7.5,10.25) to[short] (7.75,10.25);
-\draw (7.75,10.75) node[ieeestd and port, anchor=in 1, scale=0.89](port){} (port.out) to[short] (9.5,10.5);
-\draw (port.left) to[short] (7.5,10.5);
-\draw (12.5,14.25) to[short] (12.75,14.25);
-\draw (12.5,13.75) to[short] (12.75,13.75);
-\draw (12.75,14.25) node[ieeestd nor port, anchor=in 1, scale=0.89](port){} (port.out) to[short] (14.5,14);
-\draw (12.5,11) to[short] (12.75,11);
-\draw (12.5,10.5) to[short] (12.75,10.5);
-\draw (12.75,11) node[ieeestd nor port, anchor=in 1, scale=0.89](port){} (port.out) to[short] (14.5,10.75);
-\draw (9.5,10.5) to[short] (12.5,10.5);
-\draw (9.5,14.25) to[short] (12.5,14.25);
-\draw (7.5,14) to[short] (6.25,14);
-\draw (6.25,14) to[short] (6.25,10.75);
-\draw (7.5,10.75) to[short] (6.25,10.75);
-\draw (7.5,14.25) to[short] (3.75,14.25);
-\draw (3.75,14.25) to[short] (3.75,10.5);
-\draw (7.5,10.5) to[short] (3.75,10.5);
-\draw (14.5,10.75) to[short] (17,10.75);
-\draw (14.5,14) to[short] (17,14);
-\draw (15,14) to[short] (12.5,11.5);
-\draw (12.5,11.5) to[short] (12.5,11);
-\draw (15,10.75) to[short] (12.5,13.25);
-\draw (12.5,13.25) to[short] (12.5,13.75);
-\draw (7.5,14.5) to[short] (7.5,15.25);
-\draw (7.5,15.25) to[short] (16.25,15.25);
-\draw (16.25,15.25) to[crossing] (16.25,12.75);
-\draw (16.25,12.75) to[short] (16.25,10.75);
-\draw (7.5,10.25) to[short] (7.5,9.75);
-\draw (7.5,9.75) to[short] (15.75,9.75);
-\draw (15.75,9.75) to[crossing] (15.75,11.75);
-\draw (15.75,11.75) to[short] (15.75,14);
-\draw (6.25,12.5) to[short, -o] (5.25,12.5) ;
-\draw (3.75,10.5) to[short, -o] (2.75,10.5) ;
-\node [font=\large] at (2.25,10.5) {\textbf{T}};
-\node [font=\large] at (4.5,12.5) {\textbf{CLK}};
-\draw (16.5,14) to[short, -o] (17.5,14) ;
-\draw (17,10.75) to[short, -o] (17.5,10.75) ;
-\node [font=\large] at (18,14) {\textbf{Q}};
-\node [font=\large] at (18.25,10.75) {$\mathbf{\overline{Q}}$};
-\end{circuitikz}
-}%
-
-\label{fig:my_label}
+    \centering
+    \rotatebox{90}{
+    \includegraphics[width=0.5\linewidth]{figs/image-1.png}}
+    \caption{Circuit}
+    \label{fig:enter-label}
 \end{figure}
-
-\subsection{JK Flip-Flop}
-
-\begin{figure}[!ht]
-\centering
-\resizebox{0.5\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\large]
-\draw  (6.25,14.25) rectangle (11.25,9.25);
-\draw [short] (6.25,13) -- (5,13);
-\draw [short] (6.25,11.75) -- (5,11.75);
-\draw [short] (6.25,10.5) -- (5,10.5);
-\draw [short] (11.25,13) -- (12.5,13);
-\draw [short] (11.25,10.5) -- (12.5,10.5);
-\node [font=\large] at (6.75,13) {\textbf{J}};
-\node [font=\large] at (6.75,10.5) {\textbf{K}};
-\node [font=\large] at (7,11.75) {\textbf{CLK}};
-\node [font=\large] at (10.75,13) {\textbf{Q}};
-\node [font=\large] at (10.75,10.5) {$\mathbf{\overline{Q}}$};
-\end{circuitikz}
-}%
-
-\label{fig:my_label}
-\end{figure}
-
-The JK Flip-Flop works on the principle that the output is equal to the input when both J and K are low (J = K = 0). The output takes the value of the complement of the input if both J and K are high (J = K = 1). In any other case, the output takes the value of J regardless of K. This happens when the clock is high. When the clock is low, the output retains its previous state.
-
-\begin{align*}
-    Q_{n + 1} = 
-    \begin{cases}
-        Q_n &, J = 0, K = 0\\\\
-        \overline{Q_n} &, J = 1, K = 1\\\\
-        0 &, J = 0, K = 1\\\\
-        1 &, J = 1, K = 0
-    \end{cases}
-\end{align*}
-
-The truth table of the JK Flip-Flop is given below,\\
+The circuit may look daunting and complicated at first, let us break it down and study each module seperately.
 \pagebreak
-\begin{table}[h!]
-\centering
-\begin{tabular}{|c|c|c|c|}
-\hline
-$J$ & $K$ & $Q_n$ & $Q_{n+1}$ \\
-\hline
-0 & 0 & 0 & 0 \\
-0 & 0 & 1 & 1 \\
-0 & 1 & 0 & 0 \\
-0 & 1 & 1 & 0 \\
-1 & 0 & 0 & 1 \\
-1 & 0 & 1 & 1 \\
-1 & 1 & 0 & 1 \\
-1 & 1 & 1 & 0 \\
-\hline
-\end{tabular}
-\end{table}
-
-The internal circuit diagram of the JK Flip-Flop is as below,\\
-
+\subsection{Overview}
 \begin{figure}[h!]
-\centering
-\resizebox{1\textwidth}{!}{%
-\begin{circuitikz}
-\tikzstyle{every node}=[font=\large]
-\draw (9.5,10.5) to[short] (12.5,10.5);
-\draw (9.5,14.25) to[short] (12.5,14.25);
-\draw (7.5,14) to[short] (6.25,14);
-\draw (6.25,14) to[short] (6.25,10.75);
-\draw (7.5,10.75) to[short] (6.25,10.75);
-\draw (14.5,10.75) to[short] (17,10.75);
-\draw (14.5,14) to[short] (17,14);
-\draw (15,14) to[short] (12.5,11.5);
-\draw (12.5,11.5) to[short] (12.5,11);
-\draw (15,10.75) to[short] (12.5,13.25);
-\draw (12.5,13.25) to[short] (12.5,13.75);
-\draw (7.5,14.5) to[short] (7.5,15.25);
-\draw (7.5,15.25) to[short] (16.25,15.25);
-\draw (16.25,15.25) to[crossing] (16.25,12.75);
-\draw (16.25,12.75) to[short] (16.25,10.75);
-\draw (7.5,10.25) to[short] (7.5,9.75);
-\draw (7.5,9.75) to[short] (15.75,9.75);
-\draw (15.75,9.75) to[crossing] (15.75,11.75);
-\draw (15.75,11.75) to[short] (15.75,14);
-\draw (6.25,12.5) to[short, -o] (5.25,12.5) ;
-\node [font=\large] at (4.5,12.5) {\textbf{CLK}};
-\draw (16.5,14) to[short, -o] (17.5,14) ;
-\draw (17,10.75) to[short, -o] (17.5,10.75) ;
-\node [font=\large] at (18,14) {\textbf{Q}};
-\node [font=\large] at (18.25,10.75) {$\mathbf{\overline{Q}}$};
-\draw (7.5,14.5) to[short] (7.75,14.5);
-\draw (7.5,14) to[short] (7.75,14);
-\draw (7.75,14.5) node[ieeestd nand port, anchor=in 1, scale=0.89](port){} (port.out) to[short] (9.5,14.25);
-\draw (port.left) to[short] (7.5,14.25);
-\draw (7.5,10.75) to[short] (7.75,10.75);
-\draw (7.5,10.25) to[short] (7.75,10.25);
-\draw (7.75,10.75) node[ieeestd nand port, anchor=in 1, scale=0.89](port){} (port.out) to[short] (9.5,10.5);
-\draw (port.left) to[short] (7.5,10.5);
-\draw (12.5,14.25) to[short] (12.75,14.25);
-\draw (12.5,13.75) to[short] (12.75,13.75);
-\draw (12.75,14.25) node[ieeestd nand port, anchor=in 1, scale=0.89](port){} (port.out) to[short] (14.5,14);
-\draw (12.5,11) to[short] (12.75,11);
-\draw (12.5,10.5) to[short] (12.75,10.5);
-\draw (12.75,11) node[ieeestd nand port, anchor=in 1, scale=0.89](port){} (port.out) to[short] (14.5,10.75);
-\draw (7.5,14.25) to[short] (6.25,14.25);
-\draw (7.75,10.5) to[short] (6.25,10.5);
-\draw (6.25,14.25) to[short, -o] (5.25,14.25) ;
-\draw (6.25,10.5) to[short, -o] (5.5,10.5) ;
-\node [font=\large] at (4.75,14.25) {\textbf{J}};
-\node [font=\large] at (5,10.5) {\textbf{K}};
-\end{circuitikz}
-}%
-
-\label{fig:my_label}
+    \centering
+    \includegraphics[width=1\linewidth]{figs/overview.png}
+    \caption{Circuit Overview}
+    \label{fig:enter-label}
 \end{figure}
+The upper part shows the units digit and the lower part shows the tens digit. For each digit, there is a module called $INC/DEC$ that either increments or decrements current count (by 1) depending on which button is pressed and returns the value to the $T$ of the flipflop (which becomes $Q$ of flipflop when clock becomes high). As for clock, logic is slightly different for each digit. For units place, output of the two button presses are ORed and given as clock (so that clock is only high when either button is pressed). For the tens place, each button press is first ANDed with either $\overline{Q_3}.\overline{Q_2}.\overline{Q_1}.\overline{Q_0}$ (decrement) or $Q_3\overline{Q_2}.\overline{Q_1}Q_0$ (increment) of units place and then ORed. This way clock is only high if incrementing button is pressed and units place is 9 or if decrementing button is pressed and units place is 0.
 
 \subsection{JK to T Flip-Flop Conversion}
 Since JK flip-flops were provided instead of T flip-flops, conversion was necessary. Converting a JK flip-flop to a T flip-flop can be done by simply shorting J and K ports of JK flip-flops.
@@ -299,168 +115,210 @@ We get,
 \begin{align*}
     K = T
 \end{align*}
-\subsection{Asynchronous Counter}
-In an asynchronous counter, the clock input of each flip-flop (except the first) is driven by the output of the previous flip-flop. This creates a ripple effect as the signal propagates through the counter, hence the alternative name ``ripple counter''.
-
-\section{Materials Required}
-\begin{enumerate}
-\item T flip-flops (or JK flip-flops LM7476 (or similar))
-\item  NAND gate LM7410 (or similar)
-\item LED
-\item Arduino (for clock)
-\item Oscilloscope 
-\item Wires
-\item Breadboard
-\end{enumerate}
-
-\section{Procedure}
-
-\subsection{Converting JK Flip-Flops to T Flip-Flops}
-Short the J and K pins of JK flip-flops as mentioned above to convert it into a T flip-flop
-
-\subsection{Counter Design}
-\begin{enumerate}
-\item The PRESET pin (J) of all flip-flops was connected to \textit{HIGH}.
-\item The output of the first flip-flop was connected to the clock input of the second flip-flop.
-\item The output of the second flip-flop was connected to the clock input of the third flip-flop.
-\item The outputs of all three flip-flops were connected to LEDs through resistors indication.
-This gives a counter that goes from 0 to 7 (for the 0 to 7 counter to work, set $\mathbf{\overline{CLR}}$ to \textit{HIGH})
-\end{enumerate}
-
-\subsection{Reset Mechanism}
-\begin{enumerate}
-\item The outputs of all three flip-flops were connected to the inputs (1A, 1B, 1C) of the LM7410 NAND gate.
-\item The output of the NAND gate (1Y) was connected to the $\mathbf{\overline{CLR}}$ pins of all flip-flops.
-\end{enumerate}
-
-This configuration ensures that when the counter reaches the state $111$ (decimal 7), the NAND gate outputs a LOW signal, which clears all flip-flops, resetting the counter to 000'' (decimal 0).
-
-\subsection{Logic}
-The output of one of the first Flip-Flop is connected to the clock of the second flip-flop. Since both J and K are 1, i.e., T = 1, output of first flip-flop will take the value of complement of its previous output at every falling edge. Similarly, for the second and the third flip-flop. But after 6 cycles of the clock, on the seventh cycle when all the 3 outputs are 1, the NAND gate to which these 3 are given as inputs takes the value 0 which is then given to the $\mathbf{\overline{CLR}}$ of the flip-flops which then sets all the outputs to 0 regardless of the inputs effectively looping it back to 0. So here, all the output signals suddenly drop to 0 from their previous state. So the graph of the outputs looks like the following plot. The period of every output signal is 7 times the time period of the clock.
-
+\subsection{Changing Count}
 \begin{figure}[h!]
-    \centering
-    \includegraphics[width=1\linewidth]{figs/Output_signals.png}
-    \caption{Clock and Output Signals}
+    \includegraphics[width=1\linewidth]{figs/incdec.png}
+    \caption{INC/DEC Module}
     \label{fig:enter-label}
 \end{figure}
-
-\subsection{Clock Signal Generation}
-The Arduino code used for generating a clock signal of period $1s$ is as follows:
-\begin{verbatim}
-    void setup () {
-        pinMode(13, OUTPUT);
-    }
-
-    void loop () {
-        digitalWrite(13, HIGH);
-        delay(1000);
-        digitalWrite(13, LOW);
-        delay(1000);
-    }
-\end{verbatim}
-\pagebreak
-\subsection{Circuit Image}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.7\linewidth]{figs/circuit.png}
-    \caption{Circuit}
-    \label{fig:enter-label}
-\end{figure}
-
-\section{Results and Observations}
-\subsection{Counter}
-\begin{figure}[h!]
-	\begin{subfigure}[b]{100pt}
-		\caption{0}
-		\includegraphics[width = 200pt]{figs/0.png}
-	\end{subfigure}
-	\hspace{110pt}
-	\begin{subfigure}[b]{100pt}
-		\caption{1}
-		\includegraphics[width = 200pt]{figs/1.png}
-	\end{subfigure}
-\end{figure}
-\pagebreak
-\begin{figure}[h!]
-    \begin{subfigure}[b]{100pt}
-		\caption{2}
-		\includegraphics[width = 200pt]{figs/2.png}
-	\end{subfigure}
-	\hspace{110pt}
-	\begin{subfigure}[b]{100pt}
-		\caption{3}
-		\includegraphics[width = 200pt]{figs/3.png}
-	\end{subfigure}
-    \begin{subfigure}[b]{100pt}
-		\caption{4}
-		\includegraphics[width = 200pt]{figs/4.png}
-	\end{subfigure}
-	\hspace{110pt}
-	\begin{subfigure}[b]{100pt}
-		\caption{5}
-		\includegraphics[width = 200pt]{figs/5.png}
-	\end{subfigure}
-    \begin{subfigure}[b]{100pt}
-    \centering
-		\caption{6}
-		\includegraphics[width = 200pt]{figs/6.png}
-	\end{subfigure}
-	\hspace{110pt}
-\end{figure}
+To either increment or decrement count depending on button press, we just AND the button press with their corresponding module (either increment or decrement) and OR the two outputs.
+\subsection{Incrementing}
+For the units digit in the UP counter, we derive the T flip-flop inputs using Karnaugh maps:
 \pagebreak
 \begin{table}[h!]
 \centering
-\begin{tabular}{ccccc}
-\toprule
-Count & $Q_3$ & $Q_2$ & $Q_1$ & Decimal \\
-\midrule
-0 & 0 & 0 & 0 & 0 \\
-1 & 0 & 0 & 1 & 1 \\
-2 & 0 & 1 & 0 & 2 \\
-3 & 0 & 1 & 1 & 3 \\
-4 & 1 & 0 & 0 & 4 \\
-5 & 1 & 0 & 1 & 5 \\
-6 & 1 & 1 & 0 & 6 \\
-7 & 0 & 0 & 0 & 0 \\
-\bottomrule
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Current State} & \textbf{$T_3$} & \textbf{$T_2$} & \textbf{$T_1$} & \textbf{$T_0$} & \textbf{Next State}\\
+\hline
+0000 & 0 & 0 & 0 & 1 & 0001 \\
+0001 & 0 & 0 & 1 & 1 & 0010 \\
+0010 & 0 & 0 & 0 & 1 & 0011 \\
+0011 & 0 & 1 & 1 & 1 & 0100 \\
+0100 & 0 & 0 & 0 & 1 & 0101 \\
+0101 & 0 & 0 & 1 & 1 & 0110 \\
+0110 & 0 & 0 & 0 & 1 & 0111 \\
+0111 & 1 & 1 & 1 & 1 & 1000 \\
+1000 & 0 & 0 & 0 & 1 & 1001 \\
+1001 & 1 & 0 & 0 & 1 & 0000 \\
+\hline
 \end{tabular}
-\caption{Counting sequence of the Mod-7 counter}
-\label{tab:counting_sequence}
 \end{table}
-\subsection{Oscilloscope Readings}
+% Karnaugh map for T0
 \begin{figure}[h!]
-        \centering
-		\caption{Oscilloscope Reading-1}
-		\includegraphics[width = 230pt]{figs/clk_vs_flipflop-1.png}
+\centering
+\begin{karnaugh-map}[4][4][1][$Q_1$,$Q_0$][$Q_3$,$Q_2$]
+\manualterms{1,1,1,1,1,1,1,1,1,1,X,X,X,X,X,X}
+\implicant{0}{10}
+\end{karnaugh-map}
+\caption{Karnaugh Map for $T_0$}
+\end{figure}
+\pagebreak
+% Karnaugh map for T1
+\begin{figure}[h!]
+\centering
+\begin{karnaugh-map}[4][4][1][$Q_1$,$Q_0$][$Q_3$,$Q_2$]
+\manualterms{0,1,0,1,0,1,0,1,0,0,X,X,X,X,X,X}
+\implicant{1}{7}
+\end{karnaugh-map}
+\caption{Karnaugh Map for $T_1$}
+\end{figure}
+% Karnaugh map for T2
+\begin{figure}[h!]
+\centering
+\begin{karnaugh-map}[4][4][1][$Q_1$,$Q_0$][$Q_3$,$Q_2$]
+\manualterms{0,0,0,1,0,0,0,1,0,0,X,X,X,X,X,X}
+\implicant{3}{11}
+\end{karnaugh-map}
+\caption{Karnaugh Map for $T_2$}
+\end{figure}
+\pagebreak
+% Karnaugh map for T3
+\begin{figure}[h!]
+\centering
+\begin{karnaugh-map}[4][4][1][$Q_1$,$Q_0$][$Q_3$,$Q_2$]
+\manualterms{0,0,0,0,0,0,0,1,0,1,X,X,X,X,X,X}
+\implicant{7}{15}
+\implicant{13}{11}
+\end{karnaugh-map}
+\caption{Karnaugh Map for $T_3$}
+\end{figure}
+\begin{align*}
+&\text{From the Karnaugh map simplification, we derive:}\\
+T_0 &= 1 \\
+T_1 &= \overline{Q_3Q_0} \\
+T_2 &= Q_1Q_0 \\
+T_3 &= Q_3Q_0 + Q_2T_2
+\end{align*}
+\subsection{Decrementing}
+Decrementing is done using Karnaugh Maps, 
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Current State} & \textbf{$T_3$} & \textbf{$T_2$} & \textbf{$T_1$} & \textbf{$T_0$} & \textbf{Next State}\\
+\hline
+0000 & 1 & 0 & 0 & 1 & 1001 \\
+0001 & 0 & 0 & 0 & 1 & 0000 \\
+0010 & 0 & 0 & 1 & 1 & 0001 \\
+0011 & 0 & 0 & 0 & 1 & 0010 \\
+0100 & 0 & 1 & 1 & 1 & 0011 \\
+0101 & 0 & 0 & 0 & 1 & 0100 \\
+0110 & 0 & 0 & 1 & 1 & 0101 \\
+0111 & 0 & 0 & 0 & 1 & 0110 \\
+1000 & 1 & 1 & 1 & 1 & 0111 \\
+1001 & 0 & 0 & 0 & 1 & 1000 \\
+\hline
+\end{tabular}
+\end{table}
+\pagebreak
+% Karnaugh map for T0
+\begin{figure}[h!]
+\centering
+\begin{karnaugh-map}[4][4][1][$Q_1$,$Q_0$][$Q_3$,$Q_2$]
+\manualterms{1,1,1,1,1,1,1,1,1,1,X,X,X,X,X,X}
+\implicant{0}{10}
+\end{karnaugh-map}
+\caption{Karnaugh Map for $T_0$}
+\end{figure}
+% Karnaugh map for T1
+\begin{figure}[h!]
+\centering
+\begin{karnaugh-map}[4][4][1][$Q_1$,$Q_0$][$Q_3$,$Q_2$]
+\manualterms{0,0,1,0,1,0,1,0,1,0,X,X,X,X,X,X}
+\implicant{2}{10}
+\implicantedge{4}{12}{6}{14}
+\implicantedge{12}{8}{14}{10}
+\end{karnaugh-map}
+\caption{Karnaugh Map for $T_1$}
+\end{figure}
+\pagebreak
+% Karnaugh map for T2
+\begin{figure}[h!]
+\centering
+\begin{karnaugh-map}[4][4][1][$Q_1$,$Q_0$][$Q_3$,$Q_2$]
+\manualterms{0,0,0,0,1,0,0,0,1,0,X,X,X,X,X,X}
+\implicant{4}{12}
+\implicant{12}{8}
+\end{karnaugh-map}
+\caption{Karnaugh Map for $T_2$}
+\end{figure}
+% Karnaugh map for T3
+\begin{figure}[h!]
+\centering
+\begin{karnaugh-map}[4][4][1][$Q_1$,$Q_0$][$Q_3$,$Q_2$]
+\manualterms{1,0,0,0,0,0,0,0,1,0,X,X,X,X,X,X}
+\implicantedge{0}{0}{8}{8}
+\end{karnaugh-map}
+\caption{Karnaugh Map for $T_3$}
+\end{figure}
+\begin{align*}
+&\text{From the Karnaugh map simplification, we derive:}\\
+T_0 &= 1 \\
+T_1 &= Q_1\overline{Q_0} + \overline{Q_1}.\overline{Q_0}.Q_2 + \overline{Q_1}.\overline{Q_0}.Q_3  \\
+T_2 &= Q_2 .\overline{Q_1}.\overline{Q_0}  + Q_3.\overline{Q_1}.\overline{Q_0}  \\
+T_3 &= \overline{Q_2}.\overline{Q_1}.\overline{Q_0}
+\end{align*}
+\subsection{Manual Reset Button}
+A manual asynchronous reset button was added to reset count of number of people in the mess to $0$ regardless of current number of people in the mess. This was done by connecting all the $\overline{CLR}$ pins of the flip flops to a leg of the push button whose other end is grounded, and this leg of the push button is connected to $VCC$ through a pull up resistor.
+\begin{figure}[h!]
+\centering
+\resizebox{0.2\textwidth}{!}{%
+\begin{circuitikz}
+\tikzstyle{every node}=[font=\large]
+\draw (6.25,15.5) to[R] (6.25,13);
+\draw (6.25,13) to[push button] (6.25,11.5);
+\draw (6.25,11.5) to (6.25,11) node[ground]{};
+\draw (6.25,13) to[short, -o] (7.5,13) ;
+\draw (6.25,15.5) to[short, -o] (6.25,15.75) ;
+\node [font=\large] at (6.25,16.25) {$VCC$};
+\node [font=\large] at (6,10) {$GND$};
+\node [font=\large] at (8.25,13) {$\overline{CLR}$};
+\end{circuitikz}
+}%
+
+\label{fig:my_label}
+\end{figure}
+Through this process, we can ensure that $\overline{CLR}$ is always $HIGH$ unless button is pressed in which case $\overline{CLR}$ becomes $0$ which due to the design of the flipflop automatically nulls all outputs regardless of input.
+\subsection{Clock}
+The clock for the units digit is generated by ANDing the two button press signals. For the tens digit, the clock is generated by:
+\begin{itemize}
+\item ANDing the increment button with $Q_3\bar{Q_2}\bar{Q_1}Q_0$ of the units place (1 only when units digit is 9)
+\item ANDing the decrement button with $\bar{Q_3}\bar{Q_2}\bar{Q_1}\bar{Q_0}$ of the units place (1 only when units digit is 0)
+\item ORing the output of the two above mentioned AND gates.
+\end{itemize}
+
+\section{Results}
+Images of circuits for some outputs,
+\begin{figure}[h!]
+    \centering
+    \rotatebox{90}{
+    \includegraphics[width=0.5\linewidth]{figs/image-1.png}}
+    \label{fig:enter-label}
 \end{figure}
 \pagebreak
 \begin{figure}[h!]
-        \centering
-		\caption{Circuit-1}
-		\includegraphics[width = 200pt]{figs/ckt_oscilloscope-1.png}
+    \centering
+    \rotatebox{90}{
+    \includegraphics[width=0.5\linewidth]{figs/image-2.png}}
+    \label{fig:enter-label}
 \end{figure}
 \begin{figure}[h!]
-        \centering
-		\caption{Oscilloscope Reading-2}
-		\includegraphics[width = 230pt]{figs/clk_vs_flipflop-2.png}
+    \centering
+    \rotatebox{90}{
+    \includegraphics[width=0.5\linewidth]{figs/image-3.png}}
+    \label{fig:enter-label}
 \end{figure}
+\pagebreak
 \begin{figure}[h!]
-        \centering
-		\caption{Circuit-2}
-		\includegraphics[width = 200pt]{figs/ckt_oscilloscope-2.png}
+    \centering
+    \rotatebox{90}{
+    \includegraphics[width=0.5\linewidth]{figs/image-4.png}}
+    \label{fig:enter-label}
 \end{figure}
-\begin{figure}[h!]
-        \centering
-		\caption{Oscilloscope Reading-3}
-		\includegraphics[width = 230pt]{figs/clk_vs_flipflop-3.png}
-\end{figure}
-\begin{figure}[h!]
-        \centering
-		\caption{Circuit-3}
-		\includegraphics[width = 200pt]{figs/ckt_oscilloscope-3.png}
-\end{figure}
-
+\begin{align*}
+&\text{Videos of working may be found here,}\\ &\text{\url{https://github.com/ArjunPavanje/EE1200/tree/main/Experiment_8/vids}}
+\end{align*}
 \section{Conclusion}
-The experiment successfully demonstrated the design and implementation of a Mod-7 asynchronous counter using T flip-flops converted from JK flip-flops, using Arduino as a clock.
+The above report shows how a mess counter from 0-99 was built using Karnaugh Maps, multiplexing with a manual reset button.
 \end{document}
