@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.12)  9 APR 2025 19:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.12)  21 APR 2025 16:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -784,202 +784,212 @@ Package pdftex.def Info: .logo/logo.png  used on input line 24.
 
 {/opt/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./.logo/logo.
 png>]
-<figs/image-1.png, id=68, 750.805pt x 1606.0pt>
-File: figs/image-1.png Graphic file (type png)
-<use figs/image-1.png>
-Package pdftex.def Info: figs/image-1.png  used on input line 59.
-(pdftex.def)             Requested size: 172.5pt x 368.98015pt.
-
-Overfull \hbox (23.98015pt too wide) in paragraph at lines 58--60
- [][] 
- []
-
+<figs/circuit.png, id=68, 1606.0pt x 1204.5pt>
+File: figs/circuit.png Graphic file (type png)
+<use figs/circuit.png>
+Package pdftex.def Info: figs/circuit.png  used on input line 56.
+(pdftex.def)             Requested size: 241.49895pt x 181.1083pt.
 
 
 [2{/opt/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./f
-igs/image-1.png>]
-<figs/overview.png, id=75, 654.445pt x 797.98125pt>
+igs/circuit.png (PNG copy)>]
+<figs/overview.png, id=75, 1053.9375pt x 679.53876pt>
 File: figs/overview.png Graphic file (type png)
 <use figs/overview.png>
-Package pdftex.def Info: figs/overview.png  used on input line 68.
-(pdftex.def)             Requested size: 345.0pt x 420.66327pt.
-
-
-[3 <./figs/overview.png>]
+Package pdftex.def Info: figs/overview.png  used on input line 65.
+(pdftex.def)             Requested size: 345.0pt x 222.44429pt.
 \@karnaughmap@local@cellcount@=\count339
 \@karnaughmap@local@northwest@=\count340
 \@karnaughmap@local@southeast@=\count341
+
+
+[3 <./figs/overview.png (PNG copy)>]
 \@karnaughmap@local@cellcount@=\count342
 \@karnaughmap@local@northwest@=\count343
 \@karnaughmap@local@southeast@=\count344
 
 
 [4]
-<figs/incdec.png, id=90, 1198.4775pt x 776.14969pt>
-File: figs/incdec.png Graphic file (type png)
-<use figs/incdec.png>
-Package pdftex.def Info: figs/incdec.png  used on input line 120.
-(pdftex.def)             Requested size: 345.0pt x 223.41962pt.
 
+[5]
 
 Package karnaugh-map Warning: The API for specifying variable labels have been 
 updated. You are currently using the old API(v1). In the new API each variable 
 label is specified separately. See the documentation for more details. Backward
- compatibility may disappear in a future release. on input line 151.
+ compatibility may disappear in a future release. on input line 200.
 
 \@karnaughmap@local@cellcount@=\count345
 \@karnaughmap@local@northwest@=\count346
 \@karnaughmap@local@southeast@=\count347
+\@karnaughmap@local@northwest@=\count348
+\@karnaughmap@local@southeast@=\count349
+\@karnaughmap@local@northwest@=\count350
+\@karnaughmap@local@southeast@=\count351
+\@karnaughmap@local@testcaseone@=\count352
+\@karnaughmap@local@testcasetwo@=\count353
+\@karnaughmap@local@coordinateonecounter@=\count354
+\@karnaughmap@local@coordinatetwocounter@=\count355
+\@karnaughmap@local@coordinateonecounter@=\count356
+\@karnaughmap@local@coordinatetwocounter@=\count357
 
 Package karnaugh-map Warning: The API for specifying variable labels have been 
 updated. You are currently using the old API(v1). In the new API each variable 
 label is specified separately. See the documentation for more details. Backward
- compatibility may disappear in a future release. on input line 161.
+ compatibility may disappear in a future release. on input line 212.
 
-\@karnaughmap@local@cellcount@=\count348
-\@karnaughmap@local@northwest@=\count349
-\@karnaughmap@local@southeast@=\count350
+\@karnaughmap@local@cellcount@=\count358
+\@karnaughmap@local@northwest@=\count359
+\@karnaughmap@local@southeast@=\count360
+\@karnaughmap@local@northwest@=\count361
+\@karnaughmap@local@southeast@=\count362
+\@karnaughmap@local@northwest@=\count363
+\@karnaughmap@local@southeast@=\count364
+\@karnaughmap@local@northwest@=\count365
+\@karnaughmap@local@southeast@=\count366
 
-Package karnaugh-map Warning: The API for specifying variable labels have been 
-updated. You are currently using the old API(v1). In the new API each variable 
-label is specified separately. See the documentation for more details. Backward
- compatibility may disappear in a future release. on input line 170.
-
-\@karnaughmap@local@cellcount@=\count351
-\@karnaughmap@local@northwest@=\count352
-\@karnaughmap@local@southeast@=\count353
-
-Package karnaugh-map Warning: The API for specifying variable labels have been 
-updated. You are currently using the old API(v1). In the new API each variable 
-label is specified separately. See the documentation for more details. Backward
- compatibility may disappear in a future release. on input line 180.
-
-\@karnaughmap@local@cellcount@=\count354
-\@karnaughmap@local@northwest@=\count355
-\@karnaughmap@local@southeast@=\count356
-\@karnaughmap@local@northwest@=\count357
-\@karnaughmap@local@southeast@=\count358
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-[5 <./figs/incdec.png>]
 
 [6]
+
+Package karnaugh-map Warning: The API for specifying variable labels have been 
+updated. You are currently using the old API(v1). In the new API each variable 
+label is specified separately. See the documentation for more details. Backward
+ compatibility may disappear in a future release. on input line 225.
+
+\@karnaughmap@local@cellcount@=\count367
+\@karnaughmap@local@northwest@=\count368
+\@karnaughmap@local@southeast@=\count369
+\@karnaughmap@local@northwest@=\count370
+\@karnaughmap@local@southeast@=\count371
+\@karnaughmap@local@northwest@=\count372
+\@karnaughmap@local@southeast@=\count373
+\@karnaughmap@local@northwest@=\count374
+\@karnaughmap@local@southeast@=\count375
+
 
 [7]
 
 Package karnaugh-map Warning: The API for specifying variable labels have been 
 updated. You are currently using the old API(v1). In the new API each variable 
 label is specified separately. See the documentation for more details. Backward
- compatibility may disappear in a future release. on input line 219.
+ compatibility may disappear in a future release. on input line 239.
 
-\@karnaughmap@local@cellcount@=\count359
-\@karnaughmap@local@northwest@=\count360
-\@karnaughmap@local@southeast@=\count361
-
-Package karnaugh-map Warning: The API for specifying variable labels have been 
-updated. You are currently using the old API(v1). In the new API each variable 
-label is specified separately. See the documentation for more details. Backward
- compatibility may disappear in a future release. on input line 228.
-
-\@karnaughmap@local@cellcount@=\count362
-\@karnaughmap@local@northwest@=\count363
-\@karnaughmap@local@southeast@=\count364
-\@karnaughmap@local@testcaseone@=\count365
-\@karnaughmap@local@testcasetwo@=\count366
-\@karnaughmap@local@coordinateonecounter@=\count367
-\@karnaughmap@local@coordinatetwocounter@=\count368
-\@karnaughmap@local@coordinateonecounter@=\count369
-\@karnaughmap@local@coordinatetwocounter@=\count370
-\@karnaughmap@local@testcaseone@=\count371
-\@karnaughmap@local@testcasetwo@=\count372
-\@karnaughmap@local@coordinateonecounter@=\count373
-\@karnaughmap@local@coordinatetwocounter@=\count374
-\@karnaughmap@local@coordinateonecounter@=\count375
-\@karnaughmap@local@coordinatetwocounter@=\count376
-
-Package karnaugh-map Warning: The API for specifying variable labels have been 
-updated. You are currently using the old API(v1). In the new API each variable 
-label is specified separately. See the documentation for more details. Backward
- compatibility may disappear in a future release. on input line 240.
-
-\@karnaughmap@local@cellcount@=\count377
-\@karnaughmap@local@northwest@=\count378
-\@karnaughmap@local@southeast@=\count379
-\@karnaughmap@local@northwest@=\count380
-\@karnaughmap@local@southeast@=\count381
-
-Package karnaugh-map Warning: The API for specifying variable labels have been 
-updated. You are currently using the old API(v1). In the new API each variable 
-label is specified separately. See the documentation for more details. Backward
- compatibility may disappear in a future release. on input line 250.
-
-\@karnaughmap@local@cellcount@=\count382
-\@karnaughmap@local@testcaseone@=\count383
-\@karnaughmap@local@testcasetwo@=\count384
-\@karnaughmap@local@coordinateonecounter@=\count385
-\@karnaughmap@local@coordinatetwocounter@=\count386
-\@karnaughmap@local@coordinateonecounter@=\count387
-\@karnaughmap@local@coordinatetwocounter@=\count388
+\@karnaughmap@local@cellcount@=\count376
+\@karnaughmap@local@northwest@=\count377
+\@karnaughmap@local@southeast@=\count378
+<figs/verilog.png, id=112, 522.45187pt x 154.32657pt>
+File: figs/verilog.png Graphic file (type png)
+<use figs/verilog.png>
+Package pdftex.def Info: figs/verilog.png  used on input line 259.
+(pdftex.def)             Requested size: 345.0pt x 101.90999pt.
 
 
 [8]
+<figs/verilog1.png, id=118, 523.20468pt x 151.3153pt>
+File: figs/verilog1.png Graphic file (type png)
+<use figs/verilog1.png>
+Package pdftex.def Info: figs/verilog1.png  used on input line 268.
+(pdftex.def)             Requested size: 345.0pt x 99.77835pt.
 
-[9]
 
-[10]
-File: figs/image-1.png Graphic file (type png)
-<use figs/image-1.png>
-Package pdftex.def Info: figs/image-1.png  used on input line 296.
-(pdftex.def)             Requested size: 172.5pt x 368.98015pt.
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 275.
 
-Overfull \hbox (23.98015pt too wide) in paragraph at lines 295--298
- [][] 
- []
-
-<figs/image-2.png, id=130, 772.8875pt x 1606.0pt>
-File: figs/image-2.png Graphic file (type png)
-<use figs/image-2.png>
-Package pdftex.def Info: figs/image-2.png  used on input line 303.
-(pdftex.def)             Requested size: 172.5pt x 358.44276pt.
-
-Overfull \hbox (13.44276pt too wide) in paragraph at lines 302--305
- [][] 
- []
-
-<figs/image-3.png, id=131, 774.895pt x 1606.0pt>
-File: figs/image-3.png Graphic file (type png)
-<use figs/image-3.png>
-Package pdftex.def Info: figs/image-3.png  used on input line 309.
-(pdftex.def)             Requested size: 172.5pt x 357.51155pt.
-
-Overfull \hbox (12.51155pt too wide) in paragraph at lines 308--311
- [][] 
- []
-
-<figs/image-4.png, id=132, 810.02625pt x 1606.0pt>
-File: figs/image-4.png Graphic file (type png)
-<use figs/image-4.png>
-Package pdftex.def Info: figs/image-4.png  used on input line 316.
-(pdftex.def)             Requested size: 172.5pt x 341.99953pt.
+<figs/fig1.png, id=119, 1284.8pt x 950.55125pt>
+File: figs/fig1.png Graphic file (type png)
+<use figs/fig1.png>
+Package pdftex.def Info: figs/fig1.png  used on input line 278.
+(pdftex.def)             Requested size: 241.49895pt x 178.66304pt.
+<figs/fig2.png, id=120, 1204.5pt x 1606.0pt>
+File: figs/fig2.png Graphic file (type png)
+<use figs/fig2.png>
+Package pdftex.def Info: figs/fig2.png  used on input line 283.
+(pdftex.def)             Requested size: 172.5pt x 229.98463pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[11]
+[9 <./figs/verilog.png> <./figs/verilog1.png> <./figs/fig1.png (PNG copy)>]
+<figs/fig3.png, id=131, 849.1725pt x 590.205pt>
+File: figs/fig3.png Graphic file (type png)
+<use figs/fig3.png>
+Package pdftex.def Info: figs/fig3.png  used on input line 290.
+(pdftex.def)             Requested size: 241.49895pt x 167.84993pt.
+<figs/fig4.png, id=132, 1204.5pt x 1606.0pt>
+File: figs/fig4.png Graphic file (type png)
+<use figs/fig4.png>
+Package pdftex.def Info: figs/fig4.png  used on input line 295.
+(pdftex.def)             Requested size: 207.0021pt x 275.98157pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[12 <./figs/image-2.png>]
-Overfull \hbox (1.49698pt too wide) detected at line 321
+[10 <./figs/fig2.png (PNG copy)> <./figs/fig3.png (PNG copy)>]
+<figs/fig5.png, id=140, 1101.11375pt x 797.98125pt>
+File: figs/fig5.png Graphic file (type png)
+<use figs/fig5.png>
+Package pdftex.def Info: figs/fig5.png  used on input line 302.
+(pdftex.def)             Requested size: 241.49895pt x 175.00848pt.
+<figs/fig6.png, id=141, 1204.5pt x 1606.0pt>
+File: figs/fig6.png Graphic file (type png)
+<use figs/fig6.png>
+Package pdftex.def Info: figs/fig6.png  used on input line 307.
+(pdftex.def)             Requested size: 207.0021pt x 275.98157pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[11 <./figs/fig4.png (PNG copy)> <./figs/fig5.png (PNG copy)>]
+<figs/fig7.png, id=149, 717.68124pt x 536.0025pt>
+File: figs/fig7.png Graphic file (type png)
+<use figs/fig7.png>
+Package pdftex.def Info: figs/fig7.png  used on input line 314.
+(pdftex.def)             Requested size: 241.49895pt x 180.36551pt.
+<figs/fig8.png, id=150, 1204.5pt x 1606.0pt>
+File: figs/fig8.png Graphic file (type png)
+<use figs/fig8.png>
+Package pdftex.def Info: figs/fig8.png  used on input line 319.
+(pdftex.def)             Requested size: 207.0021pt x 275.98157pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[12 <./figs/fig6.png (PNG copy)> <./figs/fig7.png (PNG copy)>]
+<figs/fig9.png, id=158, 969.6225pt x 700.6175pt>
+File: figs/fig9.png Graphic file (type png)
+<use figs/fig9.png>
+Package pdftex.def Info: figs/fig9.png  used on input line 326.
+(pdftex.def)             Requested size: 241.49895pt x 174.49112pt.
+<figs/fig10.png, id=159, 1204.5pt x 1606.0pt>
+File: figs/fig10.png Graphic file (type png)
+<use figs/fig10.png>
+Package pdftex.def Info: figs/fig10.png  used on input line 331.
+(pdftex.def)             Requested size: 207.0021pt x 275.98157pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[13 <./figs/fig8.png (PNG copy)> <./figs/fig9.png (PNG copy)>]
+Overfull \hbox (1.49698pt too wide) detected at line 337
 []
  []
 
 
 
-[13 <./figs/image-3.png> <./figs/image-4.png>] (./main.aux)
+[14 <./figs/fig10.png (PNG copy)>]
+
+[15] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -988,34 +998,50 @@ L3 programming layer <2025-01-18>
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 814DF538439D5C06C1C8FCBF1D0B5493;1391.
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 814DF538439D5C06C1C8FCBF1D0B5493;1391
+(rerunfilecheck)             After:  DD872B89F58558BB1CAE9F97E5C4A7BE;2021.
  ) 
 Here is how much of TeX's memory you used:
- 41350 strings out of 473190
- 987848 string characters out of 5691840
- 1678550 words of memory out of 5000000
- 64144 multiletter control sequences out of 15000+600000
- 566503 words of font info for 64 fonts, out of 8000000 for 9000
+ 40932 strings out of 473190
+ 975870 string characters out of 5691840
+ 1630662 words of memory out of 5000000
+ 63716 multiletter control sequences out of 15000+600000
+ 567342 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,17n,93p,919b,1147s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt
-/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/texliv
-e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/texlive/2025/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></opt/texlive/2025/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></opt/texlive/2025/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi7.pfb></opt/texlive/2025/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi9.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr12.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.
-pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt
-/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></opt/texlive/
-2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></opt/texlive/2025/te
-xmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (13 pages, 1650686 bytes).
+ 84i,16n,93p,893b,1150s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{subsection.3.7} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.3.6} has been referenced but does not ex
+ist, replaced by a fixed one
+
+</opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt/t
+exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></opt/texlive/
+2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/texlive/2025/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></opt/texlive/2025/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi6.pfb></opt/texlive/2025/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></opt/texlive/2025/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi9.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr12.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.p
+fb></opt/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></opt/
+texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/texlive/2
+025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></opt/texlive/2025/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/texlive/2025/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmtt10.pfb></opt/texlive/2025/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1000.pfb>
+Output written on main.pdf (15 pages, 35684234 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
- 174 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 500000)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 272 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 184 words of extra memory for PDF output out of 10000 (max. 10000000)
 
